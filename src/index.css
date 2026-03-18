@@ -49,14 +49,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 0;
 }
 
-/* Floating animation for mascot */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
+/* Floating animation for mascot (disabled) */
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: none;
 }
 
 /* Fade in on scroll */
