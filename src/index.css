@@ -46,12 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: repeat;
   background-size: 256px 256px;
   pointer-events: none;
-  z-index: 1;
-}
-
-.paper-texture > * {
-  position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 
 /* Floating animation for mascot */

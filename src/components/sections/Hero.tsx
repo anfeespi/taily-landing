@@ -12,21 +12,21 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-primary-container)_0%,_var(--color-surface)_50%,_var(--color-secondary-container)_100%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-20 sm:pb-16 w-full">
-        {/* Mascot */}
-        <div className="mb-6 lg:hidden">
-          <img
-            src={`${basePath}assets/images/happy_hi_tailer.png`}
-            alt="Tailer mascot"
-            className="w-44 sm:w-56 md:w-72 mx-auto block animate-float drop-shadow-2xl"
-            loading="eager"
-            width={384}
-            height={384}
-          />
-        </div>
-
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+          {/* Mascot — shown first on mobile */}
+          <div className="lg:order-2 lg:flex-1 lg:flex lg:justify-end">
+            <img
+              src={`${basePath}assets/images/happy_hi_tailer.png`}
+              alt="Tailer mascot"
+              className="w-44 sm:w-56 md:w-72 lg:w-96 mx-auto lg:mx-0 block animate-float drop-shadow-2xl"
+              loading="eager"
+              width={384}
+              height={384}
+            />
+          </div>
+
           {/* Text content */}
-          <div className="lg:flex-1 text-center lg:text-left">
+          <div className="lg:order-1 lg:flex-1 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-4 sm:mb-6">
               Una app para dar vida a cuentos infantiles
             </h1>
@@ -39,18 +39,6 @@ export default function Hero() {
               <StoreButton store="apple" />
               <StoreButton store="google" />
             </div>
-          </div>
-
-          {/* Mascot — desktop only (right side) */}
-          <div className="hidden lg:flex lg:flex-1 justify-end">
-            <img
-              src={`${basePath}assets/images/happy_hi_tailer.png`}
-              alt="Tailer mascot"
-              className="w-96 animate-float drop-shadow-2xl"
-              loading="eager"
-              width={384}
-              height={384}
-            />
           </div>
         </div>
       </div>
