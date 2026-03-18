@@ -2,18 +2,18 @@ export default function SocialProof() {
   const basePath = import.meta.env.BASE_URL
 
   const stats = [
-    { value: '7', label: 'Estilos de ilustracion', icon: '🎨' },
-    { value: '3', label: 'Rangos de edad', icon: '👶' },
-    { value: '🔊', label: 'Audio en cada escena', icon: '' },
-    { value: '🔒', label: 'IA segura para ninos', icon: '' },
+    { value: '7', label: 'Estilos de ilustracion' },
+    { value: '3', label: 'Rangos de edad' },
+    { value: '🔊', label: 'Audio en cada escena' },
+    { value: '🔒', label: 'IA segura para ninos' },
   ]
 
   return (
     <section id="confianza" className="py-16 sm:py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center">
           {/* Stats grid */}
-          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 stagger-children">
+          <div className="w-full lg:flex-1 grid grid-cols-2 gap-3 sm:gap-4 stagger-children">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -28,7 +28,7 @@ export default function SocialProof() {
           </div>
 
           {/* Mascot */}
-          <div className="lg:col-span-2 flex justify-center">
+          <div className="flex justify-center lg:w-auto shrink-0">
             <img
               src={`${basePath}assets/images/approve_tailer.png`}
               alt="Tailer aprueba"

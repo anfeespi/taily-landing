@@ -13,32 +13,32 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-20 sm:pb-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Mascot — shown first on mobile */}
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <img
+              src={`${basePath}assets/images/happy_hi_tailer.png`}
+              alt="Tailer mascot"
+              className="w-44 sm:w-56 md:w-72 lg:w-96 animate-float drop-shadow-2xl"
+              loading="eager"
+              width={384}
+              height={384}
+            />
+          </div>
+
           {/* Text content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-4 sm:mb-6">
               Una app para dar vida a cuentos infantiles
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-secondary mb-6 sm:mb-8 max-w-sm sm:max-w-lg mx-auto lg:mx-0 font-body leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-secondary mb-6 sm:mb-8 max-w-md sm:max-w-lg mx-auto lg:mx-0 font-body leading-relaxed">
               Crea cuentos personalizados con inteligencia artificial. Historias
               unicas con texto, ilustraciones y narracion de audio para cada
               nino.
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start">
               <StoreButton store="apple" />
               <StoreButton store="google" />
             </div>
-          </div>
-
-          {/* Mascot */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-            <img
-              src={`${basePath}assets/images/happy_hi_tailer.png`}
-              alt="Tailer mascot"
-              className="w-48 sm:w-64 md:w-80 lg:w-96 animate-float drop-shadow-2xl"
-              loading="eager"
-              width={384}
-              height={384}
-            />
           </div>
         </div>
       </div>
