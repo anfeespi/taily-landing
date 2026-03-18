@@ -1,5 +1,6 @@
 import Hero from '../components/sections/Hero'
 import Features from '../components/sections/Features'
+import AppShowcase from '../components/sections/AppShowcase'
 import HowItWorks from '../components/sections/HowItWorks'
 import SocialProof from '../components/sections/SocialProof'
 import FAQ from '../components/sections/FAQ'
@@ -10,6 +11,7 @@ export default function LandingPage() {
     <>
       <Hero />
       <Features />
+      <AppShowcase />
       <HowItWorks />
       <SocialProof />
       <FAQ />

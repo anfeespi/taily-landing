@@ -54,6 +54,55 @@ h1, h2, h3, h4, h5, h6 {
   animation: none;
 }
 
+/* Phone mockup */
+.phone-mockup {
+  position: relative;
+  width: 200px;
+  background: #1a1a1a;
+  border-radius: 32px;
+  padding: 10px;
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+@media (min-width: 768px) {
+  .phone-mockup {
+    width: 220px;
+  }
+}
+
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 22px;
+  background: #1a1a1a;
+  border-radius: 0 0 14px 14px;
+  z-index: 10;
+}
+
+.phone-screen {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Fade in on scroll */
 @keyframes fade-in-up {
   from {
