@@ -11,8 +11,10 @@ export default function FAQItem({ item }: FAQItemProps) {
   return (
     <div className="border border-primary-container/50 rounded-xl overflow-hidden bg-white/40">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-primary-container/20 transition-colors cursor-pointer"
+        aria-expanded={isOpen}
+        className="w-full flex items-center justify-between px-4 sm:px-6 py-4 text-left hover:bg-primary-container/20 transition-colors cursor-pointer min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
       >
         <span className="font-display text-sm md:text-base font-bold text-primary pr-4">
           {item.question}
@@ -21,6 +23,7 @@ export default function FAQItem({ item }: FAQItemProps) {
           className={`text-primary text-xl transition-transform duration-300 shrink-0 ${
             isOpen ? 'rotate-45' : ''
           }`}
+          aria-hidden="true"
         >
           +
         </span>
@@ -31,7 +34,7 @@ export default function FAQItem({ item }: FAQItemProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="px-6 pb-4 text-secondary text-sm leading-relaxed">
+          <p className="px-4 sm:px-6 pb-4 text-secondary text-sm leading-relaxed">
             {item.answer}
           </p>
         </div>

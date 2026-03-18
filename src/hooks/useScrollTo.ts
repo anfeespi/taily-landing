@@ -16,8 +16,9 @@ export function useScrollTo() {
 
       if (location.pathname !== '/') {
         navigate('/')
-        // Wait for navigation to complete before scrolling
-        setTimeout(scroll, 100)
+        requestAnimationFrame(() => {
+          requestAnimationFrame(scroll)
+        })
       } else {
         scroll()
       }

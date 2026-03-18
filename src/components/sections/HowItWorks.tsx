@@ -4,7 +4,7 @@ import { steps } from '../../data/steps'
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 sm:py-28 bg-secondary-container/20 paper-texture">
+    <section id="como-funciona" className="py-16 sm:py-20 md:py-28 bg-secondary-container/20 paper-texture">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="Como funciona"
@@ -13,9 +13,9 @@ export default function HowItWorks() {
 
         <div className="relative">
           {/* Connecting line (desktop only) */}
-          <div className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-0.5 bg-primary-container" />
+          <div className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-0.5 bg-primary-container" aria-hidden="true" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 stagger-children">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-6 stagger-children">
             {steps.map((step, index) => (
               <StepCard key={step.title} step={step} index={index} />
             ))}

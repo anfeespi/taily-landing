@@ -6,12 +6,12 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ feature }: FeatureCardProps) {
   return (
-    <div className="group bg-white/60 backdrop-blur-sm border border-primary-container/50 rounded-2xl p-6 hover:shadow-lg hover:border-primary-container transition-all duration-300 hover:-translate-y-1">
-      <div className="text-4xl mb-4">{feature.icon}</div>
-      <h3 className="font-display text-lg font-bold text-primary mb-2">
+    <div className="bg-white/60 backdrop-blur-sm border border-primary-container/50 rounded-2xl p-5 sm:p-6 hover:shadow-lg hover:border-primary-container transition-all duration-300 hover:-translate-y-1">
+      <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{feature.icon}</div>
+      <h3 className="font-display text-base sm:text-lg font-bold text-primary mb-2">
         {feature.title}
       </h3>
-      <p className="text-secondary text-sm leading-relaxed">
+      <p className="text-secondary text-xs sm:text-sm leading-relaxed">
         {feature.description}
       </p>
     </div>
