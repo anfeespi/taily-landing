@@ -35,10 +35,10 @@ export default function StoreButton({ store }: StoreButtonProps) {
       )}
       <div className="text-left">
         <div className="text-[10px] uppercase tracking-wide opacity-80">
-          {store === 'apple' ? 'Pruebala en' : 'Disponible en'}
+          {store === 'apple' ? 'Apple TestFlight' : 'Disponible en'}
         </div>
         <div className="text-sm font-semibold leading-tight">
-          {store === 'apple' ? 'TestFlight' : 'Google Play'}
+          {store === 'apple' ? 'Descargar Beta' : 'Google Play'}
         </div>
       </div>
     </button>
