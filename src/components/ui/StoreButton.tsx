@@ -2,9 +2,20 @@ interface StoreButtonProps {
   store: 'apple' | 'google'
 }
 
+const STORE_LINKS = {
+  apple: 'https://testflight.apple.com/join/nSjDDAm4',
+  google: '',
+}
+
 export default function StoreButton({ store }: StoreButtonProps) {
+  const link = STORE_LINKS[store]
+
   const handleClick = () => {
-    alert('Proximamente disponible')
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer')
+    } else {
+      alert('Proximamente disponible')
+    }
   }
 
   return (
@@ -24,10 +35,10 @@ export default function StoreButton({ store }: StoreButtonProps) {
       )}
       <div className="text-left">
         <div className="text-[10px] uppercase tracking-wide opacity-80">
-          Disponible en
+          {store === 'apple' ? 'Pruebala en' : 'Disponible en'}
         </div>
         <div className="text-sm font-semibold leading-tight">
-          {store === 'apple' ? 'App Store' : 'Google Play'}
+          {store === 'apple' ? 'TestFlight' : 'Google Play'}
         </div>
       </div>
     </button>
