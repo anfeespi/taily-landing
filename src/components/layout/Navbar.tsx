@@ -45,9 +45,9 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer bg-transparent border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1"
           >
             <img
-              src={`${basePath}assets/images/tailer.png`}
+              src={`${basePath}assets/images/taily-logo.jpeg`}
               alt="Taily"
-              className="w-8 h-8"
+              className="w-8 h-8 rounded-lg"
               width={32}
               height={32}
             />
