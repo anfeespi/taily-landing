@@ -1,11 +1,13 @@
+import { AudioIcon, ShieldIcon } from '../ui/Icons'
+
 export default function SocialProof() {
   const basePath = import.meta.env.BASE_URL
 
-  const stats = [
+  const stats: { value: React.ReactNode; label: string }[] = [
     { value: '7', label: 'Estilos de ilustracion' },
     { value: '3', label: 'Rangos de edad' },
-    { value: '🔊', label: 'Audio en cada escena' },
-    { value: '🔒', label: 'IA segura para ninos' },
+    { value: <AudioIcon />, label: 'Audio en cada escena' },
+    { value: <ShieldIcon />, label: 'IA segura para ninos' },
   ]
 
   return (
@@ -17,9 +19,9 @@ export default function SocialProof() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white/60 border border-primary-container/50 rounded-2xl p-5 sm:p-6 text-center hover:shadow-md transition-shadow"
+                className="bg-white/60 border border-primary-container/50 rounded-2xl p-5 sm:p-6 text-center hover:shadow-md transition-shadow flex flex-col items-center justify-center"
               >
-                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary mb-1">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary mb-1 flex items-center justify-center">
                   {stat.value}
                 </div>
                 <div className="text-secondary text-xs sm:text-sm">{stat.label}</div>
@@ -32,7 +34,7 @@ export default function SocialProof() {
             <img
               src={`${basePath}assets/images/approve_tailer.png`}
               alt="Tailer aprueba"
-              className="w-36 sm:w-48 md:w-56 drop-shadow-lg animate-float"
+              className="w-36 sm:w-48 md:w-56 drop-shadow-lg"
               loading="lazy"
               width={224}
               height={224}
