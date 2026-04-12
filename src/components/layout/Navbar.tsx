@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useScrollTo } from '../../hooks/useScrollTo'
 
 const navLinks = [
@@ -12,6 +13,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const scrollTo = useScrollTo()
+  const location = useLocation()
   const basePath = import.meta.env.BASE_URL
 
   const handleScroll = useCallback(() => {
@@ -22,6 +24,11 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
+
+  // Hide navbar on the manual page (it has its own header)
+  if (location.pathname === '/manual') {
+    return null
+  }
 
   const handleNavClick = (section: string) => {
     scrollTo(section)
@@ -68,6 +75,12 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
+            <Link
+              to="/manual"
+              className="text-secondary hover:text-primary transition-colors text-sm font-medium no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1"
+            >
+              Manual
+            </Link>
             <button
               type="button"
               onClick={() => handleNavClick('descargar')}
@@ -115,7 +128,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileOpen ? 'max-h-96' : 'max-h-0'
+          isMobileOpen ? 'max-h-[28rem]' : 'max-h-0'
         }`}
       >
         <div className="bg-surface/95 backdrop-blur-md border-t border-primary-container/30 px-4 py-4 space-y-1">
@@ -129,6 +142,13 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <Link
+            to="/manual"
+            onClick={() => setIsMobileOpen(false)}
+            className="block w-full text-left px-4 py-3 text-secondary hover:text-primary hover:bg-primary-container/20 rounded-lg transition-colors text-base font-medium no-underline min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            Manual
+          </Link>
           <button
             type="button"
             onClick={() => handleNavClick('descargar')}

@@ -1,8 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useScrollTo } from '../../hooks/useScrollTo'
 
 export default function Footer() {
   const scrollTo = useScrollTo()
+  const location = useLocation()
+
+  // Hide footer on the manual page (it has its own layout)
+  if (location.pathname === '/manual') {
+    return null
+  }
 
   return (
     <footer className="bg-inverse-surface text-inverse-on-surface">
@@ -35,6 +41,14 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/manual"
+                  className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors no-underline focus:outline-none focus-visible:underline"
+                >
+                  Manual de Usuario
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/politica-de-privacidad"

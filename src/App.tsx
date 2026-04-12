@@ -4,6 +4,11 @@ import Layout from './components/layout/Layout'
 import LandingPage from './pages/LandingPage'
 
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
+const UserManualPage = lazy(() => import('./pages/UserManualPage'))
+
+const fallback = (
+  <div className="min-h-screen pt-24 text-center text-secondary">Cargando...</div>
+)
 
 export default function App() {
   return (
@@ -13,8 +18,16 @@ export default function App() {
         <Route
           path="/politica-de-privacidad"
           element={
-            <Suspense fallback={<div className="min-h-screen pt-24 text-center text-secondary">Cargando...</div>}>
+            <Suspense fallback={fallback}>
               <PrivacyPolicyPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/manual"
+          element={
+            <Suspense fallback={fallback}>
+              <UserManualPage />
             </Suspense>
           }
         />
