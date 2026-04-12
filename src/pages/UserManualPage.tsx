@@ -1022,7 +1022,7 @@ export default function UserManualPage() {
                   <strong>Verifica la configuración</strong>
                   <p>
                     <strong>Tamaño:</strong> A4 &middot;{' '}
-                    <strong>Márgenes:</strong> Predeterminados &middot;{' '}
+                    <strong>Márgenes:</strong> Ninguno &middot;{' '}
                     <strong>Gráficos de fondo:</strong> Activado
                   </p>
                 </div>
