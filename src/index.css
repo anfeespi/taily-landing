@@ -548,25 +548,142 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.375rem;
 }
 
-.manual-callout {
-  background: linear-gradient(135deg, var(--color-tertiary-container) 0%, var(--color-secondary-container) 100%);
-  border-left: 4px solid var(--color-tertiary);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin: 2rem 0;
+/* ===== Callouts (sticky-note style) ===== */
+
+.callout {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fffefb;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  margin: 2.25rem 0;
   font-family: var(--font-body);
+  color: var(--color-on-surface);
+  box-shadow:
+    0 1px 0 rgba(127, 86, 15, 0.06),
+    0 12px 28px -16px rgba(54, 47, 39, 0.18),
+    0 4px 10px -6px rgba(54, 47, 39, 0.12);
+  border: 1px solid rgba(255, 221, 177, 0.6);
+}
+
+.callout::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 14px 0 0 14px;
+  background: var(--callout-accent, var(--color-primary));
+}
+
+.callout-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--callout-accent-bg, var(--color-primary-container));
+  color: var(--callout-accent, var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.callout-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.callout-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.callout-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--callout-accent, var(--color-primary));
+  margin-bottom: 0.375rem;
+}
+
+.callout-content {
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: var(--color-on-surface);
 }
 
-.manual-callout p {
+.callout-content p {
   margin: 0;
 }
 
-.manual-callout-final {
-  background: linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-secondary-container) 100%);
-  border-left-color: var(--color-primary);
+.callout-content p + p {
+  margin-top: 0.5rem;
+}
+
+.callout-content strong {
+  color: var(--color-primary);
+}
+
+/* Variants — color scheme per type */
+.callout-tip {
+  --callout-accent: #c97f0d;
+  --callout-accent-bg: #ffe6c2;
+  background: linear-gradient(180deg, #fffaf2 0%, #fff5e8 100%);
+}
+
+.callout-info {
+  --callout-accent: #4a6b35;
+  --callout-accent-bg: #d3eabc;
+  background: linear-gradient(180deg, #f8fbf3 0%, #f1f6e7 100%);
+}
+
+.callout-important {
+  --callout-accent: #a04a16;
+  --callout-accent-bg: #ffd0a8;
+  background: linear-gradient(180deg, #fff7f0 0%, #fdedde 100%);
+}
+
+.callout-success {
+  --callout-accent: #5a7340;
+  --callout-accent-bg: #d8ecc0;
+  background: linear-gradient(180deg, #f9fbf4 0%, #f0f5e6 100%);
+}
+
+.callout-farewell {
+  --callout-accent: #7f560f;
+  --callout-accent-bg: #ffddb1;
+  background: linear-gradient(180deg, #fff8ed 0%, #fdecd1 100%);
   text-align: center;
+  flex-direction: column;
+  align-items: center;
   padding: 1.75rem 2rem;
+}
+
+.callout-farewell .callout-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 0.25rem;
+}
+
+.callout-farewell .callout-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.callout-farewell .callout-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.625rem;
+}
+
+.callout-farewell .callout-content {
+  font-size: 1rem;
 }
 
 .manual-link {
@@ -912,8 +1029,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .manual-cover-banner {
   width: 100%;
-  max-width: 480px;
-  margin: 0 auto 2rem;
+  max-width: 380px;
+  margin: 0 auto 2.5rem;
   display: block;
 }
 
@@ -922,7 +1039,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3rem;
   color: var(--color-primary);
   text-align: center;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
 }
 
 .manual-cover-subtitle {
@@ -931,14 +1049,14 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   font-size: 1.25rem;
   color: var(--color-secondary);
-  margin: 0 0 2rem 0;
+  margin: 0 0 2.5rem 0;
 }
 
 .manual-cover-edition {
   text-align: center;
   font-family: var(--font-display);
   font-size: 0.875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-primary);
 }
@@ -951,61 +1069,134 @@ h1, h2, h3, h4, h5, h6 {
    PRINT STYLES (PDF export)
    ============================================ */
 @media print {
-  /* Reset everything for print */
-  * {
+  /* Force color preservation everywhere */
+  *,
+  *::before,
+  *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
 
+  /* A4 with running headers/footers */
   @page {
     size: A4;
-    margin: 18mm 16mm 22mm 16mm;
+    margin: 18mm 18mm 20mm 18mm;
   }
 
-  body {
+  @page :first {
+    margin: 0;
+  }
+
+  html, body {
     background: #fff !important;
     color: #201b13 !important;
-    font-size: 11pt;
-    line-height: 1.55;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    font-family: "Gabarito", sans-serif;
   }
 
-  /* Hide all non-manual chrome */
+  /* Hide all chrome and the entire landing layout */
   nav,
   footer,
   .no-print {
     display: none !important;
   }
 
-  /* Hide everything else on the page */
   body > div > nav,
   body > div > main > *:not(.manual-page),
   body > div > footer {
     display: none !important;
   }
 
-  /* Manual page reset */
+  /* Manual page reset — pure white background */
   .manual-page {
     background: #fff !important;
     background-image: none !important;
     min-height: auto;
+    padding: 0;
+    margin: 0;
   }
 
   .manual-page::before {
     display: none !important;
   }
 
-  /* Show cover */
-  .only-print,
-  .manual-cover {
+  /* Sidebar TOC — never print */
+  .manual-toc {
+    display: none !important;
+  }
+
+  /* Content container — full width */
+  .manual-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ===== COVER PAGE ===== */
+  .only-print {
     display: block !important;
   }
 
   .manual-cover {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 30mm 24mm;
+    box-sizing: border-box;
     page-break-after: always;
-    padding: 4rem 0;
+    background:
+      linear-gradient(180deg, #fff8f4 0%, #ffddb1 100%) !important;
+    position: relative;
   }
 
+  .manual-cover::before {
+    content: "";
+    position: absolute;
+    top: 18mm;
+    left: 18mm;
+    right: 18mm;
+    bottom: 18mm;
+    border: 1.5pt solid #7f560f;
+    border-radius: 4mm;
+    pointer-events: none;
+  }
+
+  .manual-cover-banner {
+    max-width: 110mm !important;
+    margin: 0 auto 12mm !important;
+    z-index: 1;
+  }
+
+  .manual-cover-title {
+    font-size: 36pt !important;
+    color: #7f560f !important;
+    margin: 0 0 4mm 0 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em;
+    z-index: 1;
+  }
+
+  .manual-cover-subtitle {
+    font-size: 14pt !important;
+    color: #6f5b40 !important;
+    margin: 0 0 18mm 0 !important;
+    z-index: 1;
+  }
+
+  .manual-cover-edition {
+    font-size: 9pt !important;
+    color: #7f560f !important;
+    letter-spacing: 0.25em;
+    z-index: 1;
+  }
+
+  /* ===== CHAPTERS ===== */
   /* Show all chapters expanded */
   .manual-chapter-hidden,
   .manual-chapter-current {
@@ -1013,112 +1204,373 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .manual-chapter {
-    max-width: 100%;
-    margin: 0;
+    max-width: 100% !important;
+    margin: 0 !important;
     page-break-after: always;
     page-break-inside: auto;
     animation: none !important;
+    padding-top: 4mm;
   }
 
   .manual-chapter:last-of-type {
     page-break-after: auto;
   }
 
-  /* Chapter header */
+  /* Chapter header — compact and elegant */
   .manual-chapter-header {
+    text-align: center !important;
     page-break-after: avoid;
-    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+    margin-bottom: 8mm !important;
+    padding-top: 0 !important;
+    padding-bottom: 6mm;
+    border-bottom: 0.75pt dashed #ffddb1 !important;
+  }
+
+  .manual-chapter-number {
+    display: inline-block !important;
+    font-size: 8pt !important;
+    letter-spacing: 0.2em;
+    color: #7f560f !important;
+    background: #ffddb1 !important;
+    padding: 1.5mm 4mm !important;
+    border-radius: 999px;
+    margin-bottom: 4mm !important;
+    font-family: "Space Mono", monospace !important;
+    font-weight: 700;
   }
 
   .manual-chapter-title {
+    font-family: "Space Mono", monospace !important;
     font-size: 24pt !important;
     color: #7f560f !important;
+    margin: 0 0 2mm 0 !important;
+    line-height: 1.15 !important;
   }
 
   .manual-chapter-subtitle {
+    font-style: italic;
     font-size: 11pt !important;
+    color: #6f5b40 !important;
+    margin: 0 !important;
+  }
+
+  .manual-chapter-divider {
+    margin-top: 4mm !important;
+    gap: 6mm !important;
+  }
+
+  .manual-chapter-divider span {
+    flex: 0 1 30mm !important;
+    height: 0.5pt !important;
+    background: #ffddb1 !important;
   }
 
   .manual-chapter-mascot {
-    width: 48px !important;
-    height: 48px !important;
+    width: 14mm !important;
+    height: 14mm !important;
+    filter: none !important;
   }
 
   /* Body typography */
   .manual-chapter-body {
-    font-size: 10.5pt;
-    line-height: 1.6;
+    font-size: 10.5pt !important;
+    line-height: 1.6 !important;
+    color: #201b13 !important;
+    font-family: "Gabarito", sans-serif !important;
+  }
+
+  .manual-chapter-body p {
+    margin: 0 0 3mm 0 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Subtle drop cap for print */
+  .manual-dropcap::first-letter {
+    font-family: "Space Mono", monospace !important;
+    font-size: 22pt !important;
+    line-height: 0.85 !important;
+    color: #7f560f !important;
+    float: left;
+    margin: 0.5mm 2mm 0 0 !important;
+    padding-top: 1mm;
+    font-weight: 700;
   }
 
   .manual-h3 {
-    font-size: 13pt !important;
+    font-family: "Space Mono", monospace !important;
+    font-size: 12pt !important;
     color: #7f560f !important;
+    margin: 6mm 0 3mm 0 !important;
+    padding-left: 3mm !important;
     page-break-after: avoid;
-  }
-
-  /* Drop cap (subtle) */
-  .manual-dropcap::first-letter {
-    font-size: 28pt;
-  }
-
-  /* Phone mockups: stay visible but smaller */
-  .phone-mockup {
-    width: 140px !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
     page-break-inside: avoid;
   }
 
-  .phone-mockup-landscape {
-    width: 220px !important;
-  }
-
-  .phone-screen {
-    border-radius: 16px;
-  }
-
-  .manual-screen-row {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    align-items: flex-start;
-    page-break-inside: avoid;
-  }
-
-  .manual-screen-row.reverse {
-    flex-direction: row-reverse;
-  }
-
-  /* Callouts */
-  .manual-callout {
-    background: #fadebc !important;
-    border-left: 3px solid #516440 !important;
-    padding: 0.75rem 1rem;
-    page-break-inside: avoid;
-    margin: 1rem 0;
+  .manual-h3::before {
+    width: 1mm !important;
+    background: #7f560f !important;
   }
 
   /* Lists */
   .manual-list,
   .manual-list-nested {
+    margin: 0 0 4mm 0 !important;
+    padding-left: 6mm !important;
+  }
+
+  .manual-list li,
+  .manual-list-nested li {
+    margin-bottom: 1.5mm;
     page-break-inside: avoid;
   }
 
-  /* Cards */
+  /* ===== Phone mockups in print ===== */
+  .phone-mockup {
+    width: 38mm !important;
+    background: #2a2a2a !important;
+    border-radius: 4mm !important;
+    padding: 1.5mm !important;
+    box-shadow: 0 1pt 3pt rgba(0, 0, 0, 0.2) !important;
+    page-break-inside: avoid;
+  }
+
+  .phone-mockup-landscape {
+    width: 70mm !important;
+  }
+
+  .phone-notch {
+    top: 1.5mm !important;
+    width: 14mm !important;
+    height: 3mm !important;
+    background: #2a2a2a !important;
+    border-radius: 0 0 2mm 2mm !important;
+  }
+
+  .phone-screen {
+    border-radius: 3mm !important;
+  }
+
+  /* Screen rows always horizontal in print */
+  .manual-screen-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6mm !important;
+    align-items: flex-start !important;
+    page-break-inside: avoid;
+    margin: 4mm 0 !important;
+  }
+
+  .manual-screen-row.reverse {
+    flex-direction: row-reverse !important;
+  }
+
+  .manual-screen-text {
+    flex: 1;
+    font-size: 10pt !important;
+  }
+
+  /* ===== Callouts in print ===== */
+  .callout {
+    page-break-inside: avoid;
+    margin: 4mm 0 !important;
+    padding: 3mm 4mm !important;
+    box-shadow: none !important;
+    border: 0.5pt solid #ffddb1 !important;
+    background: #fffaf2 !important;
+    gap: 3mm !important;
+  }
+
+  .callout::before {
+    width: 1mm !important;
+  }
+
+  .callout-tip {
+    background: #fff5e8 !important;
+  }
+
+  .callout-info {
+    background: #f1f6e7 !important;
+  }
+
+  .callout-important {
+    background: #fdedde !important;
+  }
+
+  .callout-success {
+    background: #f0f5e6 !important;
+  }
+
+  .callout-farewell {
+    background: #fdecd1 !important;
+    padding: 5mm 6mm !important;
+  }
+
+  .callout-icon {
+    width: 8mm !important;
+    height: 8mm !important;
+    border-radius: 2mm !important;
+  }
+
+  .callout-icon svg {
+    width: 4.5mm !important;
+    height: 4.5mm !important;
+  }
+
+  .callout-farewell .callout-icon {
+    width: 11mm !important;
+    height: 11mm !important;
+  }
+
+  .callout-farewell .callout-icon svg {
+    width: 6mm !important;
+    height: 6mm !important;
+  }
+
+  .callout-label {
+    font-size: 7pt !important;
+    margin-bottom: 1mm !important;
+  }
+
+  .callout-content {
+    font-size: 9.5pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ===== Cards (nav grid, icon grid, config, stages) ===== */
+  .manual-nav-grid,
+  .manual-icon-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 3mm !important;
+    margin: 4mm 0 !important;
+  }
+
   .manual-nav-item,
-  .manual-icon-item,
-  .manual-config-table,
+  .manual-icon-item {
+    background: #fff8f4 !important;
+    border: 0.5pt solid #ffddb1 !important;
+    border-radius: 2mm !important;
+    padding: 3mm !important;
+    page-break-inside: avoid;
+  }
+
+  .manual-nav-label,
+  .manual-icon-name {
+    font-size: 9.5pt !important;
+    margin-bottom: 1mm !important;
+    color: #7f560f !important;
+  }
+
+  .manual-nav-item p,
+  .manual-icon-item p {
+    font-size: 8.5pt !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+  }
+
+  /* Config table */
+  .manual-config-table {
+    background: #fff8f4 !important;
+    border: 0.5pt solid #ffddb1 !important;
+    border-radius: 2mm !important;
+    padding: 3mm !important;
+    page-break-inside: avoid;
+    margin: 4mm 0 !important;
+  }
+
+  .manual-config-row {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 4mm !important;
+    padding: 2mm 1mm !important;
+    border-bottom: 0.25pt dashed #ffddb1 !important;
+  }
+
+  .manual-config-row:last-child {
+    border-bottom: none !important;
+  }
+
+  .manual-config-name {
+    font-size: 9pt !important;
+    color: #7f560f !important;
+    min-width: 50mm !important;
+  }
+
+  .manual-config-values {
+    font-size: 9pt !important;
+    color: #6f5b40 !important;
+  }
+
+  /* Pedagogical stages */
+  .manual-stages {
+    margin: 4mm 0 !important;
+    gap: 4mm !important;
+  }
+
   .manual-stage {
     background: #fff8f4 !important;
-    border: 1px solid #ffddb1 !important;
+    border: 0.5pt solid #ffddb1 !important;
+    border-left: 1.5pt solid #516440 !important;
+    border-radius: 2mm !important;
+    padding: 4mm 5mm !important;
     page-break-inside: avoid;
   }
 
-  .manual-stage {
-    border-left: 3px solid #516440 !important;
+  .manual-stage:nth-child(2) {
+    border-left-color: #6f5b40 !important;
   }
 
-  /* Footer/page numbers */
+  .manual-stage:nth-child(3) {
+    border-left-color: #7f560f !important;
+  }
+
+  .manual-stage-header {
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 3mm !important;
+    margin-bottom: 2mm !important;
+    padding-bottom: 2mm !important;
+    border-bottom: 0.25pt dashed #ffddb1 !important;
+  }
+
+  .manual-stage-age {
+    font-size: 7.5pt !important;
+    background: #ffddb1 !important;
+    color: #7f560f !important;
+    padding: 1mm 3mm !important;
+  }
+
+  .manual-stage-title {
+    font-size: 11pt !important;
+    color: #7f560f !important;
+  }
+
+  .manual-stage p {
+    font-size: 9.5pt !important;
+    margin: 0 0 1.5mm 0 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hide chapter footer (prev/next) and contact */
   .manual-chapter-footer {
     display: none !important;
+  }
+
+  .manual-contact {
+    text-align: center !important;
+    font-size: 11pt !important;
+    margin: 4mm 0 !important;
+  }
+
+  .manual-contact a {
+    border-bottom: 0.5pt dashed #ffddb1 !important;
+  }
+
+  /* Links */
+  .manual-link {
+    color: #7f560f !important;
+    text-decoration: underline !important;
   }
 }

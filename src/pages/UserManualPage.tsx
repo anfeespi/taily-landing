@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useLayoutEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import PhoneMockup from '../components/ui/PhoneMockup'
+import ManualCallout from '../components/ui/ManualCallout'
 
 interface Chapter {
   number: string
@@ -17,8 +18,19 @@ const img = (path: string) => `${basePath}assets/images/${path}`
 export default function UserManualPage() {
   const [chapterIndex, setChapterIndex] = useState(0)
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' })
+  // useLayoutEffect runs synchronously before paint to avoid the
+  // scroll-down flash when navigating to /manual from a scrolled page.
+  useLayoutEffect(() => {
+    // Temporarily disable smooth scroll (set globally in CSS) so the
+    // jump to top is instant rather than animated.
+    const html = document.documentElement
+    const prevBehavior = html.style.scrollBehavior
+    html.style.scrollBehavior = 'auto'
+    window.scrollTo(0, 0)
+    // Restore on next frame so chapter navigation can still smooth-scroll
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = prevBehavior
+    })
   }, [chapterIndex])
 
   const chapters: Chapter[] = useMemo(
@@ -71,12 +83,12 @@ export default function UserManualPage() {
               </li>
             </ul>
 
-            <div className="manual-callout">
+            <ManualCallout variant="info" label="Disponible en">
               <p>
-                <strong>Disponible en:</strong> Android (Play Store) y iOS
-                (App Store / TestFlight). El idioma actual es <strong>espanol</strong>.
+                Android (Play Store) y iOS (App Store / TestFlight). El idioma
+                actual es <strong>espanol</strong>.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -127,13 +139,13 @@ export default function UserManualPage() {
               listo. En segundos estaras dentro de Taily.
             </p>
 
-            <div className="manual-callout">
+            <ManualCallout variant="tip">
               <p>
-                <strong>Tip:</strong> Hay una sola cuenta por persona. El adulto
-                controla la app y puede activar el <em>modo solo lectura</em>{' '}
-                cuando se la entregue al nino.
+                Hay una sola cuenta por persona. El adulto controla la app y
+                puede activar el <em>modo solo lectura</em> cuando se la
+                entregue al nino para que no salga del cuento que esta leyendo.
               </p>
-            </div>
+            </ManualCallout>
 
             <h3 className="manual-h3">Tus temas favoritos</h3>
             <p>
@@ -238,14 +250,13 @@ export default function UserManualPage() {
               </div>
             </div>
 
-            <div className="manual-callout">
+            <ManualCallout variant="info" label="Como funcionan las recomendaciones">
               <p>
-                <strong>Asi funcionan las recomendaciones:</strong> Taily
-                analiza los temas que te gustan y los compara con los temas
-                de los cuentos disponibles. Mientras mas uses la app, mejores
-                seran tus recomendaciones.
+                Taily analiza los temas que te gustan y los compara con los
+                temas de los cuentos disponibles. Mientras mas uses la app,
+                mas afinadas seran tus recomendaciones.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -327,13 +338,13 @@ export default function UserManualPage() {
               dibujando las ilustraciones y grabando el audio para ti.
             </p>
 
-            <div className="manual-callout">
+            <ManualCallout variant="success" label="Lo que recibes">
               <p>
-                <strong>Lo que recibes:</strong> un cuento completo con texto
-                narrativo, una ilustracion por escena, y narracion en audio
-                (puedes elegir voz masculina o femenina en la configuracion).
+                Un cuento completo con texto narrativo, una ilustracion por
+                escena, y narracion en audio. Puedes elegir voz masculina o
+                femenina en la configuracion.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -395,14 +406,13 @@ export default function UserManualPage() {
               app. Para desactivarlo, toca nuevamente el candado.
             </p>
 
-            <div className="manual-callout">
+            <ManualCallout variant="info" label="El diccionario magico">
               <p>
-                <strong>Diccionario:</strong> Algunas palabras del cuento estan
-                marcadas y se pueden tocar para ver su definicion en un
-                pequeno popup. Una manera divertida de aprender vocabulario
-                nuevo mientras se lee.
+                Algunas palabras del cuento estan marcadas y se pueden tocar
+                para ver su definicion en un pequeno popup. Una manera divertida
+                de aprender vocabulario nuevo mientras se lee.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -509,14 +519,13 @@ export default function UserManualPage() {
               </div>
             </div>
 
-            <div className="manual-callout">
+            <ManualCallout variant="tip" label="Inspiracion infinita">
               <p>
-                <strong>Inspiracion infinita:</strong> Si no sabes que tipo
-                de cuento crear, navega por Explorar para encontrar ideas.
-                Cada historia es unica y puede inspirarte a crear la tuya
-                propia.
+                Si no sabes que tipo de cuento crear, navega por Explorar para
+                encontrar ideas. Cada historia es unica y puede inspirarte a
+                crear la tuya propia.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -569,13 +578,13 @@ export default function UserManualPage() {
               </li>
             </ul>
 
-            <div className="manual-callout">
+            <ManualCallout variant="important">
               <p>
-                <strong>Importante:</strong> T.A.I.L.E.R solo responde sobre
-                temas relacionados con Taily. No es un chatbot de proposito
-                general, pero sabe absolutamente todo sobre la app.
+                T.A.I.L.E.R solo responde sobre temas relacionados con Taily.
+                No es un chatbot de proposito general, pero sabe absolutamente
+                todo sobre la app.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -630,13 +639,13 @@ export default function UserManualPage() {
               especifico seas, mas relevantes seran los cuentos sugeridos.
             </p>
 
-            <div className="manual-callout">
+            <ManualCallout variant="success" label="Tus ajustes se quedan">
               <p>
-                <strong>Persistencia:</strong> Todas las configuraciones se
-                guardan localmente y persisten al cerrar la app. No tienes
-                que volver a configurarlas cada vez.
+                Todas las configuraciones se guardan localmente y persisten al
+                cerrar la app. No tienes que volver a configurarlas cada vez
+                que abras Taily.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -707,13 +716,13 @@ export default function UserManualPage() {
               </div>
             </div>
 
-            <div className="manual-callout">
+            <ManualCallout variant="info" label="Crecer con Taily">
               <p>
-                <strong>Crecer con Taily:</strong> A medida que tu nino crece,
-                puedes ir aumentando la extension y complejidad de los cuentos.
-                Asi la app lo acompana durante varios anos de su desarrollo.
+                A medida que tu nino crece, puedes ir aumentando la extension
+                y complejidad de los cuentos. Asi la app lo acompana durante
+                varios anos de su desarrollo lector.
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
@@ -766,17 +775,16 @@ export default function UserManualPage() {
               </Link>.
             </p>
 
-            <div className="manual-callout manual-callout-final">
+            <ManualCallout variant="farewell" label="Gracias por elegir Taily">
               <p>
-                <strong>Gracias por elegir Taily.</strong> Esperamos que esta
-                app te ayude a compartir muchos momentos magicos de lectura
-                con tus pequenos. Cada cuento es una oportunidad de conexion,
-                aprendizaje y diversion.
+                Esperamos que esta app te ayude a compartir muchos momentos
+                magicos de lectura con tus pequenos. Cada cuento es una
+                oportunidad de conexion, aprendizaje y diversion.
               </p>
               <p style={{ marginTop: '0.75rem' }}>
-                Con carino, el equipo de Taily.
+                — El equipo de Taily
               </p>
-            </div>
+            </ManualCallout>
           </>
         ),
       },
