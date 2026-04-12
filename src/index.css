@@ -93,19 +93,36 @@ h1, h2, h3, h4, h5, h6 {
   object-position: top;
 }
 
+/* Landscape phone — same dark frame, rotated proportions */
 .phone-mockup-landscape {
-  width: 320px;
-  border-radius: 28px;
+  width: 380px;
+  max-width: 100%;
+  border-radius: 26px;
+  padding: 12px;
 }
 
 .phone-mockup-landscape .phone-notch {
-  display: none;
+  /* Notch on the left edge (where the camera would be when phone is rotated) */
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 70px;
+  border-radius: 0 14px 14px 0;
 }
 
 .phone-mockup-landscape .phone-screen {
   aspect-ratio: 19.5 / 9;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #000;
+  border-radius: 14px;
+}
+
+@media (min-width: 768px) {
+  .phone-mockup-landscape {
+    width: 460px;
+  }
 }
 
 /* Hide scrollbar for carousel */
@@ -1096,6 +1113,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Landscape phone wrapper used in chapter 6 (story viewer) */
+.manual-phone-landscape-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.25rem auto;
+}
+
+.manual-phone-caption {
+  margin-top: 0.875rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
 /* Standalone screenshot (no phone frame) — for landscape captures */
 .manual-screenshot {
   margin: 2.25rem auto;
@@ -1722,7 +1755,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .phone-mockup-landscape {
-    width: 70mm !important;
+    width: 110mm !important;
+    padding: 2mm !important;
+  }
+
+  .phone-mockup-landscape .phone-notch {
+    top: 50% !important;
+    left: 2mm !important;
+    transform: translateY(-50%) !important;
+    width: 2mm !important;
+    height: 12mm !important;
+    border-radius: 0 1.5mm 1.5mm 0 !important;
   }
 
   .phone-notch {
@@ -1731,6 +1774,18 @@ h1, h2, h3, h4, h5, h6 {
     height: 3mm !important;
     background: #2a2a2a !important;
     border-radius: 0 0 2mm 2mm !important;
+  }
+
+  .manual-phone-landscape-wrapper {
+    page-break-inside: avoid;
+    margin: 4mm auto !important;
+    text-align: center;
+  }
+
+  .manual-phone-caption {
+    font-size: 8pt !important;
+    margin-top: 2mm !important;
+    color: #6f5b40 !important;
   }
 
   .phone-screen {

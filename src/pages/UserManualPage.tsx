@@ -371,14 +371,14 @@ export default function UserManualPage() {
               Es una experiencia inmersiva pensada para acompañar al niño.
             </p>
 
-            <figure className="manual-screenshot">
-              <img
-                src={img('screen-story-viewer.jpeg')}
+            <div className="manual-phone-landscape-wrapper">
+              <PhoneMockup
+                src="assets/images/screen-story-viewer.jpeg"
                 alt="Visualizador de cuento en modo horizontal"
-                loading="lazy"
+                landscape
               />
-              <figcaption>Visualizador de cuento en modo horizontal</figcaption>
-            </figure>
+              <p className="manual-phone-caption">Visualizador de cuento en modo horizontal</p>
+            </div>
 
             <h3 className="manual-h3">Diseño de la pantalla</h3>
             <ul className="manual-list">
