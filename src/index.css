@@ -199,11 +199,24 @@ h1, h2, h3, h4, h5, h6 {
 .manual-header-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 0.875rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .manual-header-inner {
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+}
+
+.manual-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
 }
 
 .manual-back {
@@ -225,18 +238,46 @@ h1, h2, h3, h4, h5, h6 {
 .manual-print-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.625rem 1.125rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
   background: var(--color-inverse-surface);
   color: var(--color-inverse-on-surface);
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s;
   box-shadow: 0 4px 12px -4px rgba(54, 47, 39, 0.3);
+}
+
+@media (min-width: 768px) {
+  .manual-print-btn {
+    padding: 0.625rem 1.125rem;
+    font-size: 0.875rem;
+    border-radius: 12px;
+  }
+}
+
+.manual-print-btn span {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .manual-print-btn span {
+    display: inline;
+  }
+}
+
+.manual-toc-toggle span {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .manual-toc-toggle span {
+    display: inline;
+  }
 }
 
 .manual-print-btn:hover {
@@ -249,34 +290,96 @@ h1, h2, h3, h4, h5, h6 {
   height: 18px;
 }
 
-/* Layout: sidebar + content */
-.manual-page > .manual-toc + .manual-content {
-  margin-left: 0;
+/* ===== TOC: drawer on mobile/tablet, fixed sidebar on desktop ===== */
+
+/* Drawer toggle button (visible only < 1024px) */
+.manual-toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(255, 221, 177, 0.5);
+  border: 1px solid rgba(127, 86, 15, 0.2);
+  color: var(--color-primary);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
+.manual-toc-toggle:hover {
+  background: var(--color-primary-container);
+}
+
+.manual-toc-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Backdrop behind the drawer */
+.manual-toc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(32, 27, 19, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.manual-toc-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* TOC drawer (mobile/tablet default) */
+.manual-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  z-index: 50;
+  background: var(--color-surface);
+  padding: 1.5rem 1.25rem 2rem;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 8px 0 28px -8px rgba(54, 47, 39, 0.25);
+}
+
+.manual-toc.is-open {
+  transform: translateX(0);
+}
+
+/* Desktop: TOC becomes always-visible sidebar */
 @media (min-width: 1024px) {
+  .manual-toc-toggle,
+  .manual-toc-backdrop {
+    display: none !important;
+  }
+
   .manual-toc {
-    position: fixed;
     top: 73px;
-    left: 0;
     bottom: 0;
     width: 280px;
-    overflow-y: auto;
+    transform: none;
+    transition: none;
+    box-shadow: none;
     z-index: 20;
-    border-right: 1px solid rgba(255, 221, 177, 0.4);
-    background: rgba(255, 248, 244, 0.6);
+    background: rgba(255, 248, 244, 0.7);
     backdrop-filter: blur(8px);
+    border-right: 1px solid rgba(255, 221, 177, 0.5);
+    padding: 2rem 1.5rem;
   }
 
   .manual-content {
     margin-left: 280px;
   }
-}
-
-.manual-toc {
-  padding: 2rem 1.5rem;
-  position: relative;
-  z-index: 1;
 }
 
 .manual-toc-inner {
@@ -291,6 +394,37 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px dashed rgba(127, 86, 15, 0.3);
+}
+
+.manual-toc-close {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.manual-toc-close:hover {
+  background: var(--color-primary-container);
+  color: var(--color-primary);
+}
+
+.manual-toc-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 1024px) {
+  .manual-toc-close {
+    display: none;
+  }
 }
 
 .manual-toc-logo {

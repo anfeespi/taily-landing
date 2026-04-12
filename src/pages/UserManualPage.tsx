@@ -17,6 +17,7 @@ const img = (path: string) => `${basePath}assets/images/${path}`
 
 export default function UserManualPage() {
   const [chapterIndex, setChapterIndex] = useState(0)
+  const [isTocOpen, setIsTocOpen] = useState(false)
 
   // useLayoutEffect runs synchronously before paint to avoid the
   // scroll-down flash when navigating to /manual from a scrolled page.
@@ -32,6 +33,12 @@ export default function UserManualPage() {
       html.style.scrollBehavior = prevBehavior
     })
   }, [chapterIndex])
+
+  // Close the drawer on chapter change (mobile/tablet)
+  const goToChapter = (idx: number) => {
+    setChapterIndex(idx)
+    setIsTocOpen(false)
+  }
 
   const chapters: Chapter[] = useMemo(
     () => [
@@ -806,19 +813,38 @@ export default function UserManualPage() {
           <Link to="/" className="manual-back">
             <span aria-hidden="true">&larr;</span> Volver al inicio
           </Link>
-          <button
-            type="button"
-            onClick={handlePrint}
-            className="manual-print-btn"
-            aria-label="Descargar manual en PDF"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            <span>Descargar PDF</span>
-          </button>
+          <div className="manual-header-actions">
+            <button
+              type="button"
+              onClick={() => setIsTocOpen(true)}
+              className="manual-toc-toggle"
+              aria-label="Abrir indice del manual"
+              aria-expanded={isTocOpen}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="8" y1="6" x2="21" y2="6" />
+                <line x1="8" y1="12" x2="21" y2="12" />
+                <line x1="8" y1="18" x2="21" y2="18" />
+                <circle cx="4" cy="6" r="1" fill="currentColor" />
+                <circle cx="4" cy="12" r="1" fill="currentColor" />
+                <circle cx="4" cy="18" r="1" fill="currentColor" />
+              </svg>
+              <span>Indice</span>
+            </button>
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="manual-print-btn"
+              aria-label="Descargar manual en PDF"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Descargar PDF</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -830,8 +856,18 @@ export default function UserManualPage() {
         <p className="manual-cover-edition">Edicion 2026</p>
       </div>
 
-      {/* Sidebar TOC (hidden on print) */}
-      <aside className="manual-toc no-print">
+      {/* Backdrop for mobile/tablet drawer */}
+      <div
+        className={`manual-toc-backdrop no-print ${isTocOpen ? 'is-open' : ''}`}
+        onClick={() => setIsTocOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Sidebar TOC — drawer on mobile/tablet, fixed on desktop */}
+      <aside
+        className={`manual-toc no-print ${isTocOpen ? 'is-open' : ''}`}
+        aria-label="Indice del manual"
+      >
         <div className="manual-toc-inner">
           <div className="manual-toc-header">
             <img src={img('taily-logo.jpeg')} alt="Taily" className="manual-toc-logo" />
@@ -839,13 +875,24 @@ export default function UserManualPage() {
               <div className="manual-toc-title">Manual</div>
               <div className="manual-toc-subtitle">de Usuario</div>
             </div>
+            <button
+              type="button"
+              onClick={() => setIsTocOpen(false)}
+              className="manual-toc-close"
+              aria-label="Cerrar indice"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
           <ol className="manual-toc-list">
             {chapters.map((chapter, idx) => (
               <li key={chapter.slug}>
                 <button
                   type="button"
-                  onClick={() => setChapterIndex(idx)}
+                  onClick={() => goToChapter(idx)}
                   className={`manual-toc-link ${idx === chapterIndex ? 'active' : ''}`}
                 >
                   <span className="manual-toc-num">{chapter.number}</span>
