@@ -375,14 +375,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Content */
 .manual-content {
-  padding: 2.5rem 1.5rem 5rem;
+  padding: 1.25rem 1.25rem 4rem;
   position: relative;
   z-index: 1;
 }
 
 @media (min-width: 768px) {
   .manual-content {
-    padding: 4rem 3rem 6rem;
+    padding: 1.75rem 3rem 5rem;
   }
 }
 
@@ -415,8 +415,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Chapter header */
 .manual-chapter-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding-top: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 0;
 }
 
 .manual-chapter-number {
@@ -430,35 +430,35 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-primary-container);
   padding: 0.375rem 0.875rem;
   border-radius: 999px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.875rem;
 }
 
 .manual-chapter-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.875rem;
   color: var(--color-primary);
   line-height: 1.15;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 @media (min-width: 768px) {
   .manual-chapter-title {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
   }
 }
 
 .manual-chapter-subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--color-secondary);
   margin: 0;
 }
 
 @media (min-width: 768px) {
   .manual-chapter-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
 }
 
@@ -466,8 +466,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .manual-chapter-divider span {
@@ -477,8 +477,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .manual-chapter-mascot {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   filter: drop-shadow(0 6px 12px rgba(54, 47, 39, 0.15));
 }
