@@ -12,10 +12,10 @@ export default function DownloadCTA() {
         <div className="flex flex-col lg:flex-row gap-8 items-center text-center lg:text-left">
           <div className="flex-1">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
-              Comienza a crear cuentos magicos
+              Comienza a crear cuentos mágicos
             </h2>
             <p className="text-secondary text-base sm:text-lg mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0">
-              Descarga Taily y crea historias personalizadas que tu hijo amara.
+              Descarga Taily y crea historias personalizadas que tu hijo amará.
               Disponible pronto en App Store y Google Play.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start">

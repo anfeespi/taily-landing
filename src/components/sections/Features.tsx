@@ -8,7 +8,7 @@ export default function Features() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="Todo lo que Taily ofrece"
-          subtitle="Herramientas disenadas para crear experiencias de lectura magicas para los mas pequenos."
+          subtitle="Herramientas diseñadas para crear experiencias de lectura mágicas para los más pequeños."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 stagger-children">

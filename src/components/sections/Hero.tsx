@@ -32,8 +32,8 @@ export default function Hero() {
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-secondary mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 font-body leading-relaxed">
               Crea cuentos personalizados con inteligencia artificial. Historias
-              unicas con texto, ilustraciones y narracion de audio para cada
-              nino.
+              únicas con texto, ilustraciones y narración de audio para cada
+              niño.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start">
               <StoreButton store="apple" />

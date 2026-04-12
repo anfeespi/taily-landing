@@ -18,6 +18,7 @@ const img = (path: string) => `${basePath}assets/images/${path}`
 export default function UserManualPage() {
   const [chapterIndex, setChapterIndex] = useState(0)
   const [isTocOpen, setIsTocOpen] = useState(false)
+  const [isPdfHelpOpen, setIsPdfHelpOpen] = useState(false)
 
   // useLayoutEffect runs synchronously before paint to avoid the
   // scroll-down flash when navigating to /manual from a scrolled page.
@@ -45,35 +46,35 @@ export default function UserManualPage() {
       {
         number: 'I',
         title: 'Bienvenido a Taily',
-        subtitle: 'La app que crea cuentos magicos para tu pequeno',
+        subtitle: 'La app que crea cuentos mágicos para tu pequeño',
         mascot: 'happy_hi_tailer.png',
         slug: 'bienvenida',
         content: (
           <>
             <p className="manual-dropcap">
-              Taily es una aplicacion movil pensada para que padres, madres,
-              docentes y cuidadores compartan momentos magicos de lectura con
-              ninos de <strong>2 a 6 anos</strong>. Nuestra mision es simple:
-              despertar el amor por la lectura desde los primeros anos de vida.
+              Taily es una aplicación móvil pensada para que padres, madres,
+              docentes y cuidadores compartan momentos mágicos de lectura con
+              niños de <strong>2 a 6 años</strong>. Nuestra mision es simple:
+              despertar el amor por la lectura desde los primeros años de vida.
             </p>
 
             <p>
-              Con Taily, cada cuento es unico. Una inteligencia artificial crea
-              automaticamente la historia, las ilustraciones y la narracion en
-              audio a partir de los temas y personajes que tu elijas. No hay
+              Con Taily, cada cuento es único. Una inteligencia artificial crea
+              automaticamente la historia, las ilustraciónes y la narración en
+              audio a partir de los temas y personajes que tú elijas. No hay
               dos cuentos iguales, porque cada uno se escribe pensando en el
-              nino que lo va a leer.
+              niño que lo va a leer.
             </p>
 
-            <h3 className="manual-h3">Que vas a encontrar</h3>
+            <h3 className="manual-h3">Quévas a encontrar</h3>
             <ul className="manual-list">
               <li>
                 <strong>Cuentos personalizados:</strong> elige el tema, los
-                personajes y el estilo de las ilustraciones.
+                personajes y el estilo de las ilustraciónes.
               </li>
               <li>
                 <strong>Narracion en audio:</strong> cada escena tiene voz
-                profesional para acompanar la lectura.
+                profesional para acompañar la lectura.
               </li>
               <li>
                 <strong>Adaptado por edad:</strong> tres etapas de desarrollo
@@ -81,8 +82,8 @@ export default function UserManualPage() {
                 Educacion Nacional.
               </li>
               <li>
-                <strong>T.A.I.L.E.R, tu asistente:</strong> un leon amigable
-                que te guia paso a paso.
+                <strong>T.A.I.L.E.R, tu asistente:</strong> un león amigable
+                que te guía paso a paso.
               </li>
               <li>
                 <strong>Comunidad:</strong> descubre cuentos creados por otros
@@ -93,7 +94,7 @@ export default function UserManualPage() {
             <ManualCallout variant="info" label="Disponible en">
               <p>
                 Android (Play Store) y iOS (App Store / TestFlight). El idioma
-                actual es <strong>espanol</strong>.
+                actual es <strong>español</strong>.
               </p>
             </ManualCallout>
           </>
@@ -109,8 +110,8 @@ export default function UserManualPage() {
           <>
             <p className="manual-dropcap">
               Para empezar a usar Taily necesitas una cuenta. El proceso es
-              rapido y solo te tomara un minuto. Tienes dos opciones para
-              registrarte: con correo electronico o con tu cuenta de Google.
+              rápido y solo te tomará un minuto. Tienes dos opciónes para
+              registrarte: con correo electrónico o con tu cuenta de Google.
             </p>
 
             <div className="manual-screen-row">
@@ -118,48 +119,48 @@ export default function UserManualPage() {
               <div className="manual-screen-text">
                 <h3 className="manual-h3">Pantalla de bienvenida</h3>
                 <p>
-                  Al abrir Taily por primera vez veras el logo y a T.A.I.L.E.R
-                  esperandote. La pantalla de inicio de sesion te muestra:
+                  Al abrir Taily por primera vez verás el logo y a T.A.I.L.E.R
+                  esperándote. La pantalla de inicio de sesion te muestra:
                 </p>
                 <ul className="manual-list">
                   <li>Campo para tu <strong>nombre de usuario</strong></li>
-                  <li>Campo para tu <strong>contrasena</strong></li>
-                  <li>Boton <strong>Iniciar Sesion</strong></li>
-                  <li>Boton <strong>Iniciar Sesion con Google</strong></li>
-                  <li>Enlace <em>"Registrate aqui"</em> para crear una cuenta nueva</li>
+                  <li>Campo para tu <strong>contraseña</strong></li>
+                  <li>Boton <strong>Iniciar Sesión</strong></li>
+                  <li>Boton <strong>Iniciar Sesión con Google</strong></li>
+                  <li>Enlace <em>"Regístrate aquí"</em> para crear una cuenta nueva</li>
                 </ul>
               </div>
             </div>
 
-            <h3 className="manual-h3">Registro con correo electronico</h3>
+            <h3 className="manual-h3">Registro con correo electrónico</h3>
             <p>
-              Si no tienes cuenta, toca <em>"Registrate aqui"</em>. Te pediremos
-              tu correo, un nombre de usuario, una contrasena y tu fecha de
-              nacimiento. Tu contrasena se cifra de forma segura antes de
-              guardarse, asi que tus datos siempre estan protegidos.
+              Si no tienes cuenta, toca <em>"Regístrate aquí"</em>. Te pediremos
+              tu correo, un nombre de usuario, una contraseña y tu fecha de
+              nacimiento. Tu contraseña se cifra de forma segura antes de
+              guardarse, así que tus datos siempre están protegidos.
             </p>
 
             <h3 className="manual-h3">Registro con Google</h3>
             <p>
-              Si prefieres no crear una contrasena nueva, simplemente toca
-              <strong> Iniciar Sesion con Google</strong>, elige tu cuenta y
-              listo. En segundos estaras dentro de Taily.
+              Si prefieres no crear una contraseña nueva, simplemente toca
+              <strong> Iniciar Sesión con Google</strong>, elige tu cuenta y
+              listo. En segundos estarás dentro de Taily.
             </p>
 
             <ManualCallout variant="tip">
               <p>
                 Hay una sola cuenta por persona. El adulto controla la app y
                 puede activar el <em>modo solo lectura</em> cuando se la
-                entregue al nino para que no salga del cuento que esta leyendo.
+                entregue al niño para que no salga del cuento que está leyendo.
               </p>
             </ManualCallout>
 
             <h3 className="manual-h3">Tus temas favoritos</h3>
             <p>
-              Despues del registro, T.A.I.L.E.R te dara la bienvenida con un
-              mensaje y te pedira elegir tus temas de interes. Estos temas se
+              Después del registro, T.A.I.L.E.R te dará la bienvenida con un
+              mensaje y te pedirá elegir tus temas de interés. Estos temas se
               usan para recomendarte cuentos hechos por otros usuarios. Puedes
-              omitir este paso y configurarlo despues.
+              omitir este paso y configurarlo después.
             </p>
           </>
         ),
@@ -167,19 +168,19 @@ export default function UserManualPage() {
       {
         number: 'III',
         title: 'Conoce la app',
-        subtitle: 'Tu guia rapida para navegar Taily',
+        subtitle: 'Tu guía rápida para navegar Taily',
         mascot: 'thoughtful_tailer.png',
-        slug: 'navegacion',
+        slug: 'navegación',
         content: (
           <>
             <p className="manual-dropcap">
-              Taily esta disenada para ser intuitiva. Toda la navegacion
-              principal se hace desde una barra inferior con cuatro secciones,
-              y desde la barra superior puedes acceder rapidamente a tu perfil
-              y a la configuracion.
+              Taily está diseñada para ser intuitiva. Toda la navegación
+              principal se hace desde una barra inferior con cuatro secciónes,
+              y desde la barra superior puedes acceder rápidamente a tu perfil
+              y a la configuración.
             </p>
 
-            <h3 className="manual-h3">Barra de navegacion inferior</h3>
+            <h3 className="manual-h3">Barra de navegación inferior</h3>
             <div className="manual-nav-grid">
               <div className="manual-nav-item">
                 <div className="manual-nav-label">Home</div>
@@ -187,31 +188,31 @@ export default function UserManualPage() {
               </div>
               <div className="manual-nav-item">
                 <div className="manual-nav-label">Explorar</div>
-                <p>Descubre cuentos publicados por otros usuarios. Encuentra inspiracion infinita.</p>
+                <p>Descubre cuentos publicados por otros usuarios. Encuentra inspiración infinita.</p>
               </div>
               <div className="manual-nav-item">
                 <div className="manual-nav-label">Biblioteca</div>
-                <p>Todos los cuentos que has creado, organizados y listos para leer cuantas veces quieras.</p>
+                <p>Todos los cuentos que has creado, organizados y listos para leer cuántas veces quieras.</p>
               </div>
               <div className="manual-nav-item">
                 <div className="manual-nav-label">Menu</div>
-                <p>Acceso a configuracion, T.A.I.L.E.R, soporte y otras opciones de la app.</p>
+                <p>Acceso a configuración, T.A.I.L.E.R, soporte y otras opciónes de la app.</p>
               </div>
             </div>
 
             <h3 className="manual-h3">Barra superior</h3>
             <p>
-              En la parte superior de la app encontraras dos iconos siempre
+              En la parte superior de la app encontrarás dos íconos siempre
               disponibles:
             </p>
             <ul className="manual-list">
               <li>
-                <strong>Rueda de configuracion:</strong> acceso directo a los
-                ajustes de tema, fuente y voz de narracion.
+                <strong>Rueda de configuración:</strong> acceso directo a los
+                ajustes de tema, fuente y voz de narración.
               </li>
               <li>
-                <strong>Perfil:</strong> tu cuenta, tus temas de interes y
-                opciones de sesion.
+                <strong>Perfil:</strong> tu cuenta, tus temas de interés y
+                opciónes de sesion.
               </li>
             </ul>
           </>
@@ -220,22 +221,22 @@ export default function UserManualPage() {
       {
         number: 'IV',
         title: 'Tu pantalla principal',
-        subtitle: 'Lo primero que veras cada vez que abras Taily',
+        subtitle: 'Lo primero que verás cada vez que abras Taily',
         mascot: 'happy_tailer.png',
         slug: 'home',
         content: (
           <>
             <p className="manual-dropcap">
               La pantalla Home es tu punto de partida. Cada vez que abras
-              Taily encontraras un saludo personalizado y una seleccion de
+              Taily encontrarás un saludo personalizado y una selección de
               cuentos pensados especialmente para ti, basados en los temas que
-              mas te interesan.
+              más te interesan.
             </p>
 
             <div className="manual-screen-row">
               <PhoneMockup src="assets/images/screen-home.jpeg" alt="Pantalla Home con cuentos recomendados" />
               <div className="manual-screen-text">
-                <h3 className="manual-h3">Que veras en Home</h3>
+                <h3 className="manual-h3">Quéverás en Home</h3>
                 <ul className="manual-list">
                   <li>
                     <strong>Saludo personalizado:</strong> "¡Buenas tardes,
@@ -243,11 +244,11 @@ export default function UserManualPage() {
                   </li>
                   <li>
                     <strong>Cuentos Recomendados:</strong> un carrusel
-                    horizontal con cuentos seleccionados segun tus intereses.
+                    horizontal con cuentos seleccionados segun tus interéses.
                   </li>
                   <li>
                     <strong>Tarjetas de cuento:</strong> cada una muestra
-                    portada, titulo, autor y temas asociados.
+                    portada, título, autor y temas asociados.
                   </li>
                 </ul>
                 <p>
@@ -257,11 +258,11 @@ export default function UserManualPage() {
               </div>
             </div>
 
-            <ManualCallout variant="info" label="Como funcionan las recomendaciones">
+            <ManualCallout variant="info" label="Cómo funcionan las recomendaciones">
               <p>
                 Taily analiza los temas que te gustan y los compara con los
-                temas de los cuentos disponibles. Mientras mas uses la app,
-                mas afinadas seran tus recomendaciones.
+                temas de los cuentos disponibles. Mientras más uses la app,
+                más afinadas serán tus recomendaciones.
               </p>
             </ManualCallout>
           </>
@@ -270,7 +271,7 @@ export default function UserManualPage() {
       {
         number: 'V',
         title: 'Crea tu primer cuento',
-        subtitle: 'Da vida a una historia unica en pocos pasos',
+        subtitle: 'Da vida a una historia única en pocos pasos',
         mascot: 'ok_tailer.png',
         slug: 'crear',
         content: (
@@ -278,18 +279,18 @@ export default function UserManualPage() {
             <p className="manual-dropcap">
               Crear un cuento en Taily es como escribir un deseo. Tu eliges el
               tema, los personajes y el estilo, y la inteligencia artificial
-              hace el resto: texto, ilustraciones y narracion en audio. En
-              menos de un minuto tendras una historia unica para compartir.
+              hace el resto: texto, ilustraciónes y narración en audio. En
+              menos de un minuto tendras una historia única para compartir.
             </p>
 
             <div className="manual-screen-row reverse">
-              <PhoneMockup src="assets/images/screen-create-form.jpeg" alt="Formulario de creacion de cuento" />
+              <PhoneMockup src="assets/images/screen-create-form.jpeg" alt="Formulario de creación de cuento" />
               <div className="manual-screen-text">
                 <h3 className="manual-h3">El formulario</h3>
                 <p>
-                  La pantalla <em>"¿Como quieres que sea tu nueva historia?"</em>{' '}
+                  La pantalla <em>"¿Cómo quieres que sea tu nueva historia?"</em>{' '}
                   contiene los campos que necesitas llenar. Algunos son
-                  obligatorios y otros opcionales.
+                  obligatorios y otros opciónales.
                 </p>
               </div>
             </div>
@@ -302,32 +303,32 @@ export default function UserManualPage() {
                 Naturaleza, Escuela, Sueños, Diversion, Valores, Solidaridad y muchos mas.
               </li>
               <li>
-                <strong>Etapa de desarrollo:</strong> elige la edad del nino
-                (2-3, 3-5 o 4-6 anos) para que Taily adapte el vocabulario.
+                <strong>Etapa de desarrollo:</strong> elige la edad del niño
+                (2-3, 3-5 o 4-6 años) para que Taily adapte el vocabulario.
               </li>
               <li>
                 <strong>Extension:</strong>
                 <ul className="manual-list-nested">
-                  <li><em>Corto</em> (1-3 escenas): para 2-3 anos</li>
-                  <li><em>Medio</em> (4-6 escenas): para 3-5 anos</li>
-                  <li><em>Largo</em> (7+ escenas): para 4-6 anos</li>
+                  <li><em>Corto</em> (1-3 escenas): para 2-3 años</li>
+                  <li><em>Medio</em> (4-6 escenas): para 3-5 años</li>
+                  <li><em>Largo</em> (7+ escenas): para 4-6 años</li>
                 </ul>
               </li>
               <li>
                 <strong>Estilo de Imagenes:</strong> el estilo visual de las
-                ilustraciones (animado, acuarela, 3D, anime y mas).
+                ilustraciónes (animado, acuarela, 3D, anime y mas).
               </li>
             </ul>
 
-            <h3 className="manual-h3">Campos opcionales</h3>
+            <h3 className="manual-h3">Campos opciónales</h3>
             <ul className="manual-list">
               <li>
                 <strong>Descripcion del Contexto:</strong> un texto libre para
-                indicar donde sucede la historia. Ejemplo: <em>"En un bosque magico"</em>.
+                indicar donde sucede la historia. Ejemplo: <em>"En un bosque mágico"</em>.
               </li>
               <li>
                 <strong>Descripcion de Personajes:</strong> nombres y rasgos
-                de los personajes. Ejemplo: <em>"Leo, un nino curioso de 4 anos"</em>.
+                de los personajes. Ejemplo: <em>"Leo, un niño curioso de 4 años"</em>.
               </li>
               <li>
                 <strong>Temas Adicionales:</strong> chips para enriquecer la
@@ -341,15 +342,15 @@ export default function UserManualPage() {
               Cuando termines de llenar el formulario, toca el boton
               <strong> Crear Cuento</strong>. Veras una pantalla con T.A.I.L.E.R
               animado y consejos de lectura mientras se genera tu historia.
-              Esto puede tardar unos segundos: la IA esta escribiendo el texto,
-              dibujando las ilustraciones y grabando el audio para ti.
+              Esto puede tardar unos segundos: la IA está escribiendo el texto,
+              dibujando las ilustraciónes y grabando el audio para ti.
             </p>
 
             <ManualCallout variant="success" label="Lo que recibes">
               <p>
-                Un cuento completo con texto narrativo, una ilustracion por
-                escena, y narracion en audio. Puedes elegir voz masculina o
-                femenina en la configuracion.
+                Un cuento completo con texto narrativo, una ilustración por
+                escena, y narración en audio. Puedes elegir voz masculina o
+                femenina en la configuración.
               </p>
             </ManualCallout>
           </>
@@ -367,24 +368,28 @@ export default function UserManualPage() {
               Cuando abres un cuento, Taily entra en modo lectura. La imagen
               de la escena ocupa toda la pantalla, el texto aparece debajo y
               puedes navegar entre escenas con flechas o deslizando el dedo.
-              Es una experiencia inmersiva pensada para acompanar al nino.
+              Es una experiencia inmersiva pensada para acompañar al niño.
             </p>
 
-            <div className="manual-screen-row">
-              <PhoneMockup src="assets/images/screen-story-viewer.png" alt="Visualizador de cuento" landscape />
-              <div className="manual-screen-text">
-                <h3 className="manual-h3">Diseno de la pantalla</h3>
-                <ul className="manual-list">
-                  <li><strong>Imagen a pantalla completa:</strong> ilustracion de la escena actual</li>
-                  <li><strong>Texto narrativo:</strong> superpuesto en la parte inferior</li>
-                  <li><strong>Barra de progreso:</strong> arriba, te indica en que escena estas</li>
-                  <li><strong>Flechas de navegacion:</strong> izquierda y derecha</li>
-                </ul>
-              </div>
-            </div>
+            <figure className="manual-screenshot">
+              <img
+                src={img('screen-story-viewer.png')}
+                alt="Visualizador de cuento en modo horizontal"
+                loading="lazy"
+              />
+              <figcaption>Visualizador de cuento en modo horizontal</figcaption>
+            </figure>
+
+            <h3 className="manual-h3">Diseño de la pantalla</h3>
+            <ul className="manual-list">
+              <li><strong>Imagen a pantalla completa:</strong> ilustración de la escena actual</li>
+              <li><strong>Texto narrativo:</strong> superpuesto en la parte inferior, legible sobre la imagen</li>
+              <li><strong>Barra de progreso:</strong> en la parte superior, te indica en qué escena vas</li>
+              <li><strong>Flechas de navegación:</strong> a izquierda y derecha para pasar entre escenas</li>
+            </ul>
 
             <h3 className="manual-h3">Barra de herramientas</h3>
-            <p>En la parte superior del visualizador encontraras varios iconos:</p>
+            <p>En la parte superior del visualizador encontrarás varios íconos:</p>
             <div className="manual-icon-grid">
               <div className="manual-icon-item">
                 <div className="manual-icon-name">Volver</div>
@@ -392,31 +397,31 @@ export default function UserManualPage() {
               </div>
               <div className="manual-icon-item">
                 <div className="manual-icon-name">Modo solo lectura</div>
-                <p>Bloquea la navegacion para que el nino solo pueda ver el cuento actual.</p>
+                <p>Bloquea la navegación para que el niño solo pueda ver el cuento actual.</p>
               </div>
               <div className="manual-icon-item">
                 <div className="manual-icon-name">Pantalla completa</div>
-                <p>Expande la visualizacion ocultando los controles del sistema.</p>
+                <p>Expande la visualización ocultando los controles del sistema.</p>
               </div>
               <div className="manual-icon-item">
                 <div className="manual-icon-name">Audio</div>
-                <p>Activa o pausa la narracion en voz del cuento.</p>
+                <p>Activa o pausa la narración en voz del cuento.</p>
               </div>
             </div>
 
             <h3 className="manual-h3">Modo solo lectura</h3>
             <p>
-              Cuando le entregas el dispositivo a tu nino, activa el{' '}
-              <strong>modo solo lectura</strong> tocando el icono del candado.
-              Esto bloquea la salida del visualizador para que el pequeno solo
-              pueda ver el cuento actual sin acceder a otras secciones de la
+              Cuando le entregas el dispositivo a tu niño, activa el{' '}
+              <strong>modo solo lectura</strong> tocando el ícono del candado.
+              Esto bloquea la salida del visualizador para que el pequeño solo
+              pueda ver el cuento actual sin acceder a otras secciónes de la
               app. Para desactivarlo, toca nuevamente el candado.
             </p>
 
-            <ManualCallout variant="info" label="El diccionario magico">
+            <ManualCallout variant="info" label="El diccionario mágico">
               <p>
                 Algunas palabras del cuento estan marcadas y se pueden tocar
-                para ver su definicion en un pequeno popup. Una manera divertida
+                para ver su definición en un pequeño popup. Una manera divertida
                 de aprender vocabulario nuevo mientras se lee.
               </p>
             </ManualCallout>
@@ -433,9 +438,9 @@ export default function UserManualPage() {
           <>
             <p className="manual-dropcap">
               La <strong>Biblioteca</strong> es donde viven todos los cuentos
-              que has creado. Aqui puedes buscarlos por titulo, filtrarlos por
+              que has creado. Aquí puedes buscarlos por título, filtrarlos por
               tema, marcarlos como favoritos y compartirlos en PDF. Tu
-              coleccion personal va creciendo cada vez que creas un nuevo
+              colección personal va creciendo cada vez que creas un nuevo
               cuento.
             </p>
 
@@ -445,7 +450,7 @@ export default function UserManualPage() {
                 <h3 className="manual-h3">Vista de cuadricula</h3>
                 <p>
                   Tus cuentos se muestran en tarjetas con la portada y el
-                  titulo. Cada tarjeta tiene dos iconos:
+                  título. Cada tarjeta tiene dos íconos:
                 </p>
                 <ul className="manual-list">
                   <li>
@@ -453,7 +458,7 @@ export default function UserManualPage() {
                     favorito. Los favoritos aparecen con estrella dorada.
                   </li>
                   <li>
-                    <strong>Tres puntos (menu):</strong> abre las opciones del
+                    <strong>Tres puntos (menu):</strong> abre las opciónes del
                     cuento.
                   </li>
                 </ul>
@@ -463,7 +468,7 @@ export default function UserManualPage() {
             <h3 className="manual-h3">Buscar y filtrar</h3>
             <ul className="manual-list">
               <li>
-                <strong>Campo de busqueda:</strong> escribe el titulo del
+                <strong>Campo de búsqueda:</strong> escribe el título del
                 cuento que buscas.
               </li>
               <li>
@@ -475,18 +480,18 @@ export default function UserManualPage() {
 
             <h3 className="manual-h3">Opciones del cuento</h3>
             <p>
-              Al tocar el menu de tres puntos en una tarjeta, veras estas
-              opciones:
+              Al tocar el menu de tres puntos en una tarjeta, verás estas
+              opciónes:
             </p>
             <ul className="manual-list">
               <li>
                 <strong>Reportar cuento:</strong> si encuentras contenido que
                 no cumple los lineamientos de la plataforma, puedes reportarlo
-                seleccionando una categoria y agregando un comentario opcional.
+                seleccionando una categoría y agregando un comentario opciónal.
               </li>
               <li>
                 <strong>Compartir cuento:</strong> exporta el cuento como un
-                archivo PDF con portada, ilustraciones y texto narrativo.
+                archivo PDF con portada, ilustraciónes y texto narrativo.
                 Incluye marca de agua <em>"Creado en Taily"</em>. Puedes
                 compartirlo por WhatsApp, correo o cualquier otra app.
               </li>
@@ -503,33 +508,33 @@ export default function UserManualPage() {
         content: (
           <>
             <p className="manual-dropcap">
-              La seccion <strong>Explorar</strong> es tu ventana a la comunidad
-              de Taily. Aqui puedes descubrir cuentos creados por otros
-              usuarios alrededor del mundo. Cada vez que entras encontraras
+              La sección <strong>Explorar</strong> es tu ventana a la comunidad
+              de Taily. Aquí puedes descubrir cuentos creados por otros
+              usuarios alrededor del mundo. Cada vez que entras encontrarás
               nuevas historias inspiradoras.
             </p>
 
             <div className="manual-screen-row reverse">
               <PhoneMockup src="assets/images/screen-explore.png" alt="Pantalla de explorar cuentos" />
               <div className="manual-screen-text">
-                <h3 className="manual-h3">Que vas a encontrar</h3>
+                <h3 className="manual-h3">Quévas a encontrar</h3>
                 <p>
-                  Cada cuento se presenta con su portada, titulo, nombre del
+                  Cada cuento se presenta con su portada, título, nombre del
                   autor y los temas asociados. Toca cualquier cuento para
                   abrirlo en el visualizador y leerlo de inmediato.
                 </p>
                 <p>
-                  Las recomendaciones se basan en los temas de tu interes,
-                  asi que mientras mas configures tus preferencias, mas
-                  relevantes seran los cuentos que veas.
+                  Las recomendaciones se basan en los temas de tu interés,
+                  así que mientras más configures tus preferencias, más
+                  relevantes serán los cuentos que veas.
                 </p>
               </div>
             </div>
 
-            <ManualCallout variant="tip" label="Inspiracion infinita">
+            <ManualCallout variant="tip" label="Inspiración infinita">
               <p>
-                Si no sabes que tipo de cuento crear, navega por Explorar para
-                encontrar ideas. Cada historia es unica y puede inspirarte a
+                Si no sabes qué tipo de cuento crear, navega por Explorar para
+                encontrar ideas. Cada historia es única y puede inspirarte a
                 crear la tuya propia.
               </p>
             </ManualCallout>
@@ -539,16 +544,16 @@ export default function UserManualPage() {
       {
         number: 'IX',
         title: 'T.A.I.L.E.R, tu asistente',
-        subtitle: 'Un leon inteligente que te acompana',
+        subtitle: 'Un león inteligente que te acompaña',
         mascot: 'tailer.png',
         slug: 'tailer',
         content: (
           <>
             <p className="manual-dropcap">
-              T.A.I.L.E.R es el corazon de Taily. Es un leon 3D amigable que
+              T.A.I.L.E.R es el corazón de Taily. Es un león 3D amigable que
               actua como tu asistente personal dentro de la app. Cuando tengas
               dudas, no sepas como crear un cuento, o necesites consejos sobre
-              lectura, T.A.I.L.E.R esta ahi para ayudarte.
+              lectura, T.A.I.L.E.R está ahí para ayudarte.
             </p>
 
             <div className="manual-screen-row">
@@ -564,16 +569,16 @@ export default function UserManualPage() {
               sobre Taily.
             </p>
 
-            <h3 className="manual-h3">Que puedes preguntarle</h3>
+            <h3 className="manual-h3">Quépuedes preguntarle</h3>
             <ul className="manual-list">
               <li>
-                <strong>Sobre la creacion de cuentos:</strong> que parametros
-                usar, como describir personajes, que extension elegir segun
-                la edad del nino.
+                <strong>Sobre la creación de cuentos:</strong> qué parámetros
+                usar, cómo describir personajes, qué extensión elegir según
+                la edad del niño.
               </li>
               <li>
-                <strong>Sobre la configuracion:</strong> como cambiar la voz
-                de narracion, ajustar el tema o el tamano de fuente.
+                <strong>Sobre la configuración:</strong> como cambiar la voz
+                de narración, ajustar el tema o el tamano de fuente.
               </li>
               <li>
                 <strong>Sobre la biblioteca:</strong> como organizar, buscar
@@ -588,7 +593,7 @@ export default function UserManualPage() {
             <ManualCallout variant="important">
               <p>
                 T.A.I.L.E.R solo responde sobre temas relacionados con Taily.
-                No es un chatbot de proposito general, pero sabe absolutamente
+                No es un chatbot de propósito general, pero sabe absolutamente
                 todo sobre la app.
               </p>
             </ManualCallout>
@@ -600,23 +605,23 @@ export default function UserManualPage() {
         title: 'Personaliza Taily',
         subtitle: 'Ajusta la app a tu gusto',
         mascot: 'waiting_tailer.png',
-        slug: 'configuracion',
+        slug: 'configuración',
         content: (
           <>
             <p className="manual-dropcap">
-              Cada nino y cada familia es diferente. Por eso Taily te permite
+              Cada niño y cada familia es diferente. Por eso Taily te permite
               ajustar varios aspectos de la experiencia: el tema visual, el
-              tamano de la fuente y la voz que narra los cuentos. Todos los
+              tamaño de la fuente y la voz que narra los cuentos. Todos los
               cambios se guardan automaticamente en tu dispositivo.
             </p>
 
             <div className="manual-screen-row reverse">
-              <PhoneMockup src="assets/images/screen-config.jpeg" alt="Pantalla de configuracion" />
+              <PhoneMockup src="assets/images/screen-config.jpeg" alt="Pantalla de configuración" />
               <div className="manual-screen-text">
                 <h3 className="manual-h3">Como acceder</h3>
                 <p>
-                  Abre el menu lateral o toca el icono de la rueda de
-                  configuracion en la barra superior. Veras la seccion{' '}
+                  Abre el menu lateral o toca el ícono de la rueda de
+                  configuración en la barra superior. Veras la sección{' '}
                   <strong>Configuracion - Personaliza tu experiencia</strong>.
                 </p>
               </div>
@@ -625,7 +630,7 @@ export default function UserManualPage() {
             <h3 className="manual-h3">Opciones disponibles</h3>
             <div className="manual-config-table">
               <div className="manual-config-row">
-                <div className="manual-config-name">Tema de la aplicacion</div>
+                <div className="manual-config-name">Tema de la aplicación</div>
                 <div className="manual-config-values">Modo claro / Modo oscuro</div>
               </div>
               <div className="manual-config-row">
@@ -633,22 +638,22 @@ export default function UserManualPage() {
                 <div className="manual-config-values">Pequeno / Normal / Grande / Muy grande</div>
               </div>
               <div className="manual-config-row">
-                <div className="manual-config-name">Voz de narracion</div>
+                <div className="manual-config-name">Voz de narración</div>
                 <div className="manual-config-values">Masculina / Femenina</div>
               </div>
             </div>
 
-            <h3 className="manual-h3">Tus temas de interes</h3>
+            <h3 className="manual-h3">Tus temas de interés</h3>
             <p>
               Desde el perfil de usuario puedes actualizar en cualquier
-              momento los temas que mas te interesan. Esto afecta directamente
+              momento los temas que más te interesan. Esto afecta directamente
               las recomendaciones que ves en Home y en Explorar. Mientras mas
-              especifico seas, mas relevantes seran los cuentos sugeridos.
+              específico seas, más relevantes serán los cuentos sugeridos.
             </p>
 
             <ManualCallout variant="success" label="Tus ajustes se quedan">
               <p>
-                Todas las configuraciones se guardan localmente y persisten al
+                Todas las configuraciónes se guardan localmente y persisten al
                 cerrar la app. No tienes que volver a configurarlas cada vez
                 que abras Taily.
               </p>
@@ -659,24 +664,24 @@ export default function UserManualPage() {
       {
         number: 'XI',
         title: 'Las edades del aprendizaje',
-        subtitle: 'Como Taily acompana el desarrollo del nino',
+        subtitle: 'Como Taily acompaña el desarrollo del niño',
         mascot: 'tailer.png',
         slug: 'edades',
         content: (
           <>
             <p className="manual-dropcap">
               Taily no es solo un generador de cuentos. Es una herramienta
-              pedagogica que adapta cada historia a la etapa de desarrollo del
-              nino, basada en los referentes del{' '}
+              pedagógica que adapta cada historia a la etapa de desarrollo del
+              niño, basada en los referentes del{' '}
               <strong>Ministerio de Educacion Nacional de Colombia</strong>.
-              Cuando eliges la extension, automaticamente ajustamos el
+              Cuando eliges la extensión, automaticamente ajustamos el
               vocabulario y la complejidad.
             </p>
 
             <div className="manual-stages">
               <div className="manual-stage">
                 <div className="manual-stage-header">
-                  <span className="manual-stage-age">2-3 anos</span>
+                  <span className="manual-stage-age">2-3 años</span>
                   <h3 className="manual-stage-title">Hablar y explorar</h3>
                 </div>
                 <p>
@@ -684,23 +689,23 @@ export default function UserManualPage() {
                 </p>
                 <p>
                   Oraciones cortas y simples, vocabulario claro y repetitivo.
-                  Las imagenes muestran elementos familiares y la narrativa
-                  sigue una sola linea para no abrumar al nino. Es la etapa de
+                  Las imágenes muestran elementos familiares y la narrativa
+                  sigue una sola linea para no abrumar al niño. Es la etapa de
                   los primeros descubrimientos.
                 </p>
               </div>
 
               <div className="manual-stage">
                 <div className="manual-stage-header">
-                  <span className="manual-stage-age">3-5 anos</span>
+                  <span className="manual-stage-age">3-5 años</span>
                   <h3 className="manual-stage-title">Preguntar y representar el mundo</h3>
                 </div>
                 <p>
                   <strong>Extension sugerida:</strong> Medio (4-6 escenas)
                 </p>
                 <p>
-                  Escenarios mas detallados, relaciones causa-efecto simples,
-                  personajes que exploran. El vocabulario se amplia y el nino
+                  Escenarios más detallados, relaciones causa-efecto simples,
+                  personajes que exploran. El vocabulario se amplia y el niño
                   empieza a relacionar los eventos del cuento con su propia
                   experiencia.
                 </p>
@@ -708,14 +713,14 @@ export default function UserManualPage() {
 
               <div className="manual-stage">
                 <div className="manual-stage-header">
-                  <span className="manual-stage-age">4-6 anos</span>
+                  <span className="manual-stage-age">4-6 años</span>
                   <h3 className="manual-stage-title">Compartir y crear con otros</h3>
                 </div>
                 <p>
                   <strong>Extension sugerida:</strong> Largo (7+ escenas)
                 </p>
                 <p>
-                  Tramas con varios personajes, conflictos cotidianos sencillos,
+                  Tramas con varios personajes, conflictos cotidiaños sencillos,
                   resolucion por dialogo y cooperacion. Los cuentos transmiten
                   valores de empatia, amistad y respeto. Mayor complejidad
                   narrativa para una mente que empieza a razonar.
@@ -725,9 +730,9 @@ export default function UserManualPage() {
 
             <ManualCallout variant="info" label="Crecer con Taily">
               <p>
-                A medida que tu nino crece, puedes ir aumentando la extension
-                y complejidad de los cuentos. Asi la app lo acompana durante
-                varios anos de su desarrollo lector.
+                A medida que tu niño crece, puedes ir aumentando la extensión
+                y complejidad de los cuentos. Asi la app lo acompaña durante
+                varios años de su desarrollo lector.
               </p>
             </ManualCallout>
           </>
@@ -736,7 +741,7 @@ export default function UserManualPage() {
       {
         number: 'XII',
         title: 'Soporte y contacto',
-        subtitle: 'Estamos aqui para ayudarte',
+        subtitle: 'Estamos aquí para ayudarte',
         mascot: 'happy_tailer.png',
         slug: 'soporte',
         content: (
@@ -744,19 +749,19 @@ export default function UserManualPage() {
             <p className="manual-dropcap">
               Si en algun momento necesitas ayuda, tienes varias formas de
               obtenerla. T.A.I.L.E.R esta dentro de la app para responder
-              preguntas frecuentes, pero tambien puedes escribirnos
+              preguntas frecuentes, pero también puedes escribirnos
               directamente al equipo de Taily.
             </p>
 
-            <h3 className="manual-h3">Resumen de uso rapido</h3>
+            <h3 className="manual-h3">Resumen de uso rápido</h3>
             <ol className="manual-list">
               <li>Descarga la app desde Play Store o App Store.</li>
-              <li>Registrate con correo o con tu cuenta de Google.</li>
-              <li>Selecciona tus temas de interes (puedes omitirlo).</li>
-              <li>Crea tu primer cuento desde el boton de creacion.</li>
-              <li>Lee el cuento en el visualizador, activa el audio y el modo solo lectura si vas a entregarle el dispositivo al nino.</li>
+              <li>Regístrate con correo o con tu cuenta de Google.</li>
+              <li>Selecciona tus temas de interés (puedes omitirlo).</li>
+              <li>Crea tu primer cuento desde el boton de creación.</li>
+              <li>Lee el cuento en el visualizador, activa el audio y el modo solo lectura si vas a entregarle el dispositivo al niño.</li>
               <li>Organiza tu biblioteca: marca favoritos, busca y filtra.</li>
-              <li>Descubre nuevos cuentos en la seccion Explorar.</li>
+              <li>Descubre nuevos cuentos en la sección Explorar.</li>
               <li>Comparte tus historias exportandolas como PDF.</li>
               <li>Pide ayuda a T.A.I.L.E.R cuando lo necesites.</li>
               <li>Personaliza la experiencia desde Configuracion.</li>
@@ -773,7 +778,7 @@ export default function UserManualPage() {
 
             <h3 className="manual-h3">Politica de privacidad</h3>
             <p>
-              Taily se preocupa profundamente por la privacidad de los ninos
+              Taily se preocupa profundamente por la privacidad de los niños
               y cumple con la Ley 1581 de 2012 (Colombia), el Codigo de la
               Infancia y la Adolescencia, y normativas internacionales como
               COPPA. Puedes consultar nuestra politica completa en{' '}
@@ -785,8 +790,8 @@ export default function UserManualPage() {
             <ManualCallout variant="farewell" label="Gracias por elegir Taily">
               <p>
                 Esperamos que esta app te ayude a compartir muchos momentos
-                magicos de lectura con tus pequenos. Cada cuento es una
-                oportunidad de conexion, aprendizaje y diversion.
+                mágicos de lectura con tus pequeños. Cada cuento es una
+                oportunidad de conexion, aprendizaje y diversión.
               </p>
               <p style={{ marginTop: '0.75rem' }}>
                 — El equipo de Taily
@@ -833,7 +838,7 @@ export default function UserManualPage() {
             </button>
             <button
               type="button"
-              onClick={handlePrint}
+              onClick={() => setIsPdfHelpOpen(true)}
               className="manual-print-btn"
               aria-label="Descargar manual en PDF"
             >
@@ -910,11 +915,11 @@ export default function UserManualPage() {
           <article
             key={chapter.slug}
             className={`manual-chapter ${idx === chapterIndex ? 'manual-chapter-current' : 'manual-chapter-hidden'}`}
-            id={`capitulo-${chapter.slug}`}
+            id={`capítulo-${chapter.slug}`}
           >
             {/* Chapter header */}
             <header className="manual-chapter-header">
-              <div className="manual-chapter-number">Capitulo {chapter.number}</div>
+              <div className="manual-chapter-number">Capítulo {chapter.number}</div>
               <h1 className="manual-chapter-title">{chapter.title}</h1>
               <p className="manual-chapter-subtitle">{chapter.subtitle}</p>
               <div className="manual-chapter-divider">
@@ -960,6 +965,99 @@ export default function UserManualPage() {
           </article>
         ))}
       </main>
+
+      {/* PDF download help modal */}
+      {isPdfHelpOpen && (
+        <div className="manual-modal-backdrop no-print" onClick={() => setIsPdfHelpOpen(false)}>
+          <div
+            className="manual-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="pdf-help-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="manual-modal-close"
+              onClick={() => setIsPdfHelpOpen(false)}
+              aria-label="Cerrar"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            <div className="manual-modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </div>
+
+            <h2 id="pdf-help-title" className="manual-modal-title">Descargar el manual en PDF</h2>
+            <p className="manual-modal-subtitle">
+              Vamos a abrir el diálogo de impresión de tu navegador. Ahí podrás guardar el manual completo como PDF.
+            </p>
+
+            <ol className="manual-modal-steps">
+              <li>
+                <span className="manual-modal-step-num">1</span>
+                <div>
+                  <strong>Toca el botón "Imprimir" o "Descargar"</strong>
+                  <p>Se abrirá la ventana de impresión de tu navegador.</p>
+                </div>
+              </li>
+              <li>
+                <span className="manual-modal-step-num">2</span>
+                <div>
+                  <strong>Elige "Guardar como PDF"</strong>
+                  <p>En el campo "Destino" o "Impresora", selecciona la opción "Guardar como PDF" o "Microsoft Print to PDF".</p>
+                </div>
+              </li>
+              <li>
+                <span className="manual-modal-step-num">3</span>
+                <div>
+                  <strong>Verifica la configuración</strong>
+                  <p>
+                    <strong>Tamaño:</strong> A4 &middot;{' '}
+                    <strong>Márgenes:</strong> Predeterminados &middot;{' '}
+                    <strong>Gráficos de fondo:</strong> Activado
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span className="manual-modal-step-num">4</span>
+                <div>
+                  <strong>Guarda el archivo</strong>
+                  <p>Toca "Guardar" y elige dónde almacenarlo en tu dispositivo.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div className="manual-modal-actions">
+              <button
+                type="button"
+                className="manual-modal-btn-secondary"
+                onClick={() => setIsPdfHelpOpen(false)}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="manual-modal-btn-primary"
+                onClick={() => {
+                  setIsPdfHelpOpen(false)
+                  setTimeout(handlePrint, 200)
+                }}
+              >
+                Abrir diálogo de impresión
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

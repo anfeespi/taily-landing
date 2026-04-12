@@ -4,10 +4,10 @@ export default function SocialProof() {
   const basePath = import.meta.env.BASE_URL
 
   const stats: { value: React.ReactNode; label: string }[] = [
-    { value: '7', label: 'Estilos de ilustracion' },
+    { value: '7', label: 'Estilos de ilustración' },
     { value: '3', label: 'Rangos de edad' },
     { value: <AudioIcon />, label: 'Audio en cada escena' },
-    { value: <ShieldIcon />, label: 'IA segura para ninos' },
+    { value: <ShieldIcon />, label: 'IA segura para niños' },
   ]
 
   return (

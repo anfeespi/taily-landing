@@ -15,7 +15,7 @@ export default function AppShowcase() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="Explora la app"
-          subtitle="Descubre todas las experiencias que Taily tiene para tu pequeno."
+          subtitle="Descubre todas las experiencias que Taily tiene para tu pequeño."
         />
       </div>
 

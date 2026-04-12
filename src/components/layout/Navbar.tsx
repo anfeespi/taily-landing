@@ -5,7 +5,7 @@ import { useScrollTo } from '../../hooks/useScrollTo'
 const navLinks = [
   { label: 'Inicio', section: 'hero' },
   { label: 'Funciones', section: 'funciones' },
-  { label: 'Como Funciona', section: 'como-funciona' },
+  { label: 'Cómo Funciona', section: 'como-funciona' },
   { label: 'FAQ', section: 'preguntas' },
 ]
 
@@ -95,7 +95,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             className="md:hidden p-2 text-primary cursor-pointer bg-transparent border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
-            aria-label={isMobileOpen ? 'Cerrar menu' : 'Abrir menu'}
+            aria-label={isMobileOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileOpen}
           >
             <svg

@@ -6,28 +6,28 @@ export interface Feature {
 
 export const features: Feature[] = [
   {
-    title: 'Creacion con IA',
-    description: 'Historias generadas por inteligencia artificial, adaptadas a los intereses y preferencias de cada nino.',
+    title: 'Creación con IA',
+    description: 'Historias generadas por inteligencia artificial, adaptadas a los intereses y preferencias de cada niño.',
     iconName: 'sparkle',
   },
   {
-    title: 'Narracion de audio',
-    description: 'Cada escena incluye narracion de audio profesional para una experiencia de lectura inmersiva.',
+    title: 'Narración de audio',
+    description: 'Cada escena incluye narración de audio profesional para una experiencia de lectura inmersiva.',
     iconName: 'audio',
   },
   {
     title: 'Ilustraciones hermosas',
-    description: '7 estilos de ilustracion unicos: acuarela, 3D, anime, y mas. Cada cuento cobra vida visualmente.',
+    description: '7 estilos de ilustración únicos: acuarela, 3D, anime y más. Cada cuento cobra vida visualmente.',
     iconName: 'palette',
   },
   {
     title: 'Asistente T.A.I.L.E.R.',
-    description: 'Un asistente de lectura con IA que acompana a los ninos, responde preguntas y fomenta la comprension.',
+    description: 'Un asistente de lectura con IA que acompaña a los niños, responde preguntas y fomenta la comprensión.',
     iconName: 'bot',
   },
   {
     title: 'Personalizado por edad',
-    description: 'Contenido adaptado para ninos de 2 a 6 anos, con 3 niveles de desarrollo diferentes.',
+    description: 'Contenido adaptado para niños de 2 a 6 años, con 3 niveles de desarrollo diferentes.',
     iconName: 'child',
   },
   {

@@ -54,7 +54,7 @@ export default function Footer() {
                   to="/politica-de-privacidad"
                   className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors no-underline focus:outline-none focus-visible:underline"
                 >
-                  Politica de Privacidad
+                  Política de Privacidad
                 </Link>
               </li>
             </ul>

@@ -8,8 +8,8 @@ export default function HowItWorks() {
     <section id="como-funciona" className="py-16 sm:py-20 md:py-28 bg-secondary-container/20 paper-texture">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
-          title="Como funciona"
-          subtitle="En solo 4 pasos, crea un cuento unico para tu pequeno."
+          title="Cómo funciona"
+          subtitle="En solo 4 pasos, crea un cuento único para tu pequeño."
         />
 
         <div className="relative">
@@ -26,7 +26,7 @@ export default function HowItWorks() {
         {/* Manual CTA */}
         <div className="mt-12 sm:mt-16 flex flex-col items-center text-center">
           <p className="text-secondary text-sm sm:text-base mb-4 max-w-md">
-            ¿Quieres conocer todas las funciones a fondo? Lee la guia completa paso a paso.
+            ¿Quieres conocer todas las funciones a fondo? Lee la guía completa paso a paso.
           </p>
           <Link
             to="/manual"

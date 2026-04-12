@@ -26,3 +26,7 @@ dist-ssr
 # Working folders / source assets (not deployed)
 src/Archivo/
 taily_user_manual_context.md
+
+# Local agent / editor configs
+.agents/
+.claude/
