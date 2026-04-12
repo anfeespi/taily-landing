@@ -66,7 +66,7 @@ export default function UserManualPage() {
               niño que lo va a leer.
             </p>
 
-            <h3 className="manual-h3">Quévas a encontrar</h3>
+            <h3 className="manual-h3">Qué vas a encontrar</h3>
             <ul className="manual-list">
               <li>
                 <strong>Cuentos personalizados:</strong> elige el tema, los
@@ -236,7 +236,7 @@ export default function UserManualPage() {
             <div className="manual-screen-row">
               <PhoneMockup src="assets/images/screen-home.jpeg" alt="Pantalla Home con cuentos recomendados" />
               <div className="manual-screen-text">
-                <h3 className="manual-h3">Quéverás en Home</h3>
+                <h3 className="manual-h3">Qué verás en Home</h3>
                 <ul className="manual-list">
                   <li>
                     <strong>Saludo personalizado:</strong> "¡Buenas tardes,
@@ -517,7 +517,7 @@ export default function UserManualPage() {
             <div className="manual-screen-row reverse">
               <PhoneMockup src="assets/images/screen-explore.png" alt="Pantalla de explorar cuentos" />
               <div className="manual-screen-text">
-                <h3 className="manual-h3">Quévas a encontrar</h3>
+                <h3 className="manual-h3">Qué vas a encontrar</h3>
                 <p>
                   Cada cuento se presenta con su portada, título, nombre del
                   autor y los temas asociados. Toca cualquier cuento para
@@ -569,7 +569,7 @@ export default function UserManualPage() {
               sobre Taily.
             </p>
 
-            <h3 className="manual-h3">Quépuedes preguntarle</h3>
+            <h3 className="manual-h3">Qué puedes preguntarle</h3>
             <ul className="manual-list">
               <li>
                 <strong>Sobre la creación de cuentos:</strong> qué parámetros
