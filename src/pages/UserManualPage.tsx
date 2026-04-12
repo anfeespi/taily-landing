@@ -373,7 +373,7 @@ export default function UserManualPage() {
 
             <figure className="manual-screenshot">
               <img
-                src={img('screen-story-viewer.png')}
+                src={img('screen-story-viewer.jpeg')}
                 alt="Visualizador de cuento en modo horizontal"
                 loading="lazy"
               />
