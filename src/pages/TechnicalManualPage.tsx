@@ -2,7 +2,6 @@ import { useState, useLayoutEffect, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import ManualCallout from '../components/ui/ManualCallout'
 import CodeBlock from '../components/ui/CodeBlock'
-import Mermaid from '../components/ui/Mermaid'
 
 interface Chapter {
   number: string
@@ -67,75 +66,40 @@ export default function TechnicalManualPage() {
               reactivo con autenticación JWT.
             </p>
 
-            <h3 className="manual-h3">Diagrama de despliegue</h3>
-            <Mermaid
-              caption="Arquitectura de microservicios. Flechas en negrita = HTTPS desde el cliente; el resto es comunicación interna vía Eureka."
-              chart={`flowchart TB
-    Client["📱 App Flutter"]:::client
-
-    subgraph Gateway_["Edge"]
-      Gateway["API Gateway · :8060<br/>WebFlux + JWT"]:::gateway
-    end
-
-    subgraph Infra["Infraestructura"]
-      Registry["service-registry<br/>Eureka · :8761"]:::infra
-      Config["config-server<br/>Cloud Config · :8888"]:::infra
-    end
-
-    subgraph Domain["Dominio"]
-      User["user-service"]:::domain
-      Tale["tale-service<br/>+ Recommender"]:::domain
-      Topic["topic-service"]:::domain
-    end
-
-    subgraph AI["Servicios de IA · Gemini"]
-      Text["text-service"]:::ai
-      Image["image-service"]:::ai
-      Audio["audio-service"]:::ai
-      Validation["validation-service"]:::ai
-      Assistant["assistant-service"]:::ai
-    end
-
-    subgraph Persist["Persistencia"]
-      Mongo[("MongoDB<br/>1 DB / servicio")]:::store
-      Firebase[("Firebase<br/>Storage")]:::store
-    end
-
-    Mail["mail-service"]:::domain
-
-    Client ==>|HTTPS + JWT| Gateway
-    Gateway --> User
-    Gateway --> Tale
-    Gateway --> Topic
-    Gateway --> Mail
-    Gateway --> Assistant
-
-    Tale --> Text
-    Tale --> Image
-    Tale --> Audio
-    Tale --> Validation
-
-    User --> Mongo
-    Tale --> Mongo
-    Topic --> Mongo
-    Text --> Mongo
-    Image --> Mongo
-    Audio --> Mongo
-
-    Image --> Firebase
-    Audio --> Firebase
-
-    Gateway -.discovery.-> Registry
-    Domain -.discovery.-> Registry
-    AI -.discovery.-> Registry
-
-    classDef client fill:#fff8f4,stroke:#7f560f,stroke-width:2px
-    classDef gateway fill:#ffddb1,stroke:#7f560f,stroke-width:2px,color:#7f560f
-    classDef infra fill:#fadebc,stroke:#a08355,color:#5a3f10
-    classDef domain fill:#d3eabc,stroke:#516440,color:#3a4a2c
-    classDef ai fill:#fff5e6,stroke:#c97f0d,color:#a04a16
-    classDef store fill:#f5f0e6,stroke:#7f560f,color:#3a2e15`}
-            />
+            <h3 className="manual-h3">Capas del sistema</h3>
+            <ul className="manual-list">
+              <li>
+                <strong>Cliente:</strong> App Flutter habla solo con el gateway
+                vía HTTPS, enviando JWT en cada request.
+              </li>
+              <li>
+                <strong>Edge:</strong> <code>api-gateway</code> en{' '}
+                <code>:8060</code> (WebFlux + JWT) valida el token y enruta a
+                los servicios via Eureka.
+              </li>
+              <li>
+                <strong>Infraestructura:</strong>{' '}
+                <code>service-registry</code> (Eureka, <code>:8761</code>) y{' '}
+                <code>config-server</code> (<code>:8888</code>) viven detrás
+                del gateway.
+              </li>
+              <li>
+                <strong>Dominio:</strong>{' '}
+                <code>user-service</code>, <code>tale-service</code>,{' '}
+                <code>topic-service</code>, <code>mail-service</code>,{' '}
+                <code>assistant-service</code>.
+              </li>
+              <li>
+                <strong>IA (Gemini):</strong> <code>text-service</code>,{' '}
+                <code>image-service</code>, <code>audio-service</code> y{' '}
+                <code>validation-service</code> son orquestados por{' '}
+                <code>tale-service</code> al crear un cuento.
+              </li>
+              <li>
+                <strong>Persistencia:</strong> MongoDB (una DB lógica por
+                servicio que la necesite) y Firebase Storage (audio + imágenes).
+              </li>
+            </ul>
 
             <h3 className="manual-h3">Servicios</h3>
             <div className="manual-table-wrapper">
@@ -361,43 +325,19 @@ public class Tale {
             </p>
 
             <h3 className="manual-h3">Flujo</h3>
-            <Mermaid
-              caption="Secuencia de creación de un cuento. Image y audio se generan en paralelo dentro de cada escena."
-              chart={`sequenceDiagram
-    autonumber
-    actor C as App Flutter
-    participant G as API Gateway
-    participant T as tale-service
-    participant V as validation-service
-    participant Tx as text-service<br/>(Gemini)
-    participant I as image-service<br/>(Gemini)
-    participant A as audio-service<br/>(Gemini TTS)
-    participant F as Firebase Storage
-
-    C->>G: POST /api/v1/tale (prompt + JWT)
-    G->>G: validar JWT (HMAC256)
-    G->>T: forward
-    T->>V: validar prompt
-    V-->>T: ok / 400 ContentNotValidated
-    T->>Tx: generar escenas
-    Tx-->>T: scenes[] + diccionario
-
-    par Por cada escena
-        T->>I: generar imagen
-        I-->>F: upload PNG
-        F-->>I: URL
-        I-->>T: imageUrl
-    and
-        T->>A: generar TTS (M + F)
-        A-->>F: upload MP3 x2
-        F-->>A: URLs
-        A-->>T: audioUrls
-    end
-
-    T->>T: persistir Tale en Mongo
-    T-->>G: TaleDTO
-    G-->>C: 200 OK`}
-            />
+            <ol className="manual-list">
+              <li>Cliente envía <code>POST /api/v1/tale</code> con prompt + JWT.</li>
+              <li>Gateway valida JWT (HMAC256) y enruta a <code>tale-service</code>.</li>
+              <li><code>validation-service</code> verifica que el prompt sea apto. Si no → <code>400 ContentNotValidated</code>.</li>
+              <li><code>text-service</code> genera el texto con Gemini y crea las entradas <code>Text</code>.</li>
+              <li>Por cada escena (paralelizado vía AsyncConfig):
+                <ul className="manual-list-nested">
+                  <li><code>image-service</code> → imagen con Gemini → Firebase Storage</li>
+                  <li><code>audio-service</code> → dos audios (M/F) con TTS de Gemini → Firebase Storage</li>
+                </ul>
+              </li>
+              <li><code>tale-service</code> persiste el <code>Tale</code> con las URLs y devuelve <code>TaleDTO</code>.</li>
+            </ol>
 
             <h3 className="manual-h3">Llamadas entre servicios</h3>
             <p>

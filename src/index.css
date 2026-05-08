@@ -1113,50 +1113,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ===== Mermaid diagrams ===== */
-.manual-mermaid {
-  margin: 1.75rem 0 2rem;
-  padding: 1.25rem 1rem;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 221, 177, 0.6);
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  overflow-x: auto;
-}
-
-.manual-mermaid-svg {
-  width: 100%;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-.manual-mermaid-svg.is-ready {
-  opacity: 1;
-}
-
-.manual-mermaid-svg svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.manual-mermaid figcaption {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 0.8125rem;
-  color: var(--color-secondary);
-  text-align: center;
-  margin: 0;
-}
-
 /* ===== Code blocks (technical manual) ===== */
 .manual-code {
   position: relative;
@@ -1984,29 +1940,6 @@ h1, h2, h3, h4, h5, h6 {
   .manual-screen-text {
     flex: 1;
     font-size: 10pt !important;
-  }
-
-  /* Mermaid in print */
-  .manual-mermaid {
-    background: #fff !important;
-    border: 0.5pt solid #c8b89a !important;
-    margin: 3mm 0 !important;
-    padding: 3mm !important;
-    page-break-inside: avoid;
-  }
-
-  .manual-mermaid-svg {
-    opacity: 1 !important;
-  }
-
-  .manual-mermaid-svg svg {
-    max-width: 150mm !important;
-    height: auto !important;
-  }
-
-  .manual-mermaid figcaption {
-    font-size: 8pt !important;
-    color: #6f5b40 !important;
   }
 
   /* Code blocks in print */
