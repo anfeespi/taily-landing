@@ -53,67 +53,32 @@ export default function TechnicalManualPage() {
       {
         number: 'I',
         title: 'Arquitectura y stack',
-        subtitle: 'Spring Cloud microservicios + Flutter + Gemini',
+        subtitle: 'Spring Cloud + Flutter + Gemini',
         mascot: 'happy_hi_tailer.png',
         slug: 'arquitectura',
         content: (
           <>
             <p className="manual-dropcap">
-              Taily se compone de tres piezas: cliente <strong>Flutter</strong>,
-              backend de <strong>microservicios Spring Cloud</strong>, y modelos
-              de IA de <strong>Google Gemini</strong>. Toda comunicación
-              cliente–servidor pasa por un <strong>API Gateway</strong>{' '}
-              reactivo con autenticación JWT.
+              Taily es un cliente <strong>Flutter</strong> contra un backend
+              de <strong>microservicios Spring Cloud</strong> que delega la
+              generación de contenido a <strong>Google Gemini</strong>. Toda
+              comunicación pasa por un <strong>API Gateway</strong> reactivo
+              con autenticación JWT.
             </p>
-
-            <h3 className="manual-h3">Capas del sistema</h3>
-            <ul className="manual-list">
-              <li>
-                <strong>Cliente:</strong> App Flutter habla solo con el gateway
-                vía HTTPS, enviando JWT en cada request.
-              </li>
-              <li>
-                <strong>Edge:</strong> <code>api-gateway</code> en{' '}
-                <code>:8060</code> (WebFlux + JWT) valida el token y enruta a
-                los servicios via Eureka.
-              </li>
-              <li>
-                <strong>Infraestructura:</strong>{' '}
-                <code>service-registry</code> (Eureka, <code>:8761</code>) y{' '}
-                <code>config-server</code> (<code>:8888</code>) viven detrás
-                del gateway.
-              </li>
-              <li>
-                <strong>Dominio:</strong>{' '}
-                <code>user-service</code>, <code>tale-service</code>,{' '}
-                <code>topic-service</code>, <code>mail-service</code>,{' '}
-                <code>assistant-service</code>.
-              </li>
-              <li>
-                <strong>IA (Gemini):</strong> <code>text-service</code>,{' '}
-                <code>image-service</code>, <code>audio-service</code> y{' '}
-                <code>validation-service</code> son orquestados por{' '}
-                <code>tale-service</code> al crear un cuento.
-              </li>
-              <li>
-                <strong>Persistencia:</strong> MongoDB (una DB lógica por
-                servicio que la necesite) y Firebase Storage (audio + imágenes).
-              </li>
-            </ul>
 
             <h3 className="manual-h3">Servicios</h3>
             <div className="manual-table-wrapper">
               <table className="manual-table">
                 <thead><tr><th>Servicio</th><th>Responsabilidad</th></tr></thead>
                 <tbody>
-                  <tr><td><code>service-registry</code></td><td>Eureka (discovery)</td></tr>
-                  <tr><td><code>config-server</code></td><td>Spring Cloud Config</td></tr>
-                  <tr><td><code>api-gateway</code></td><td>Routing + JWT + caché Caffeine</td></tr>
+                  <tr><td><code>service-registry</code></td><td>Eureka discovery (<code>:8761</code>)</td></tr>
+                  <tr><td><code>config-server</code></td><td>Spring Cloud Config (<code>:8888</code>)</td></tr>
+                  <tr><td><code>api-gateway</code></td><td>Routing + JWT + caché Caffeine (<code>:8060</code>)</td></tr>
                   <tr><td><code>user-service</code></td><td>Auth, biblioteca, favoritos, temas</td></tr>
-                  <tr><td><code>tale-service</code></td><td>Cuentos, comentarios, reportes, recomendación</td></tr>
+                  <tr><td><code>tale-service</code></td><td>Cuentos, reportes, comentarios, recomendación</td></tr>
                   <tr><td><code>text-service</code></td><td>Texto con Gemini</td></tr>
                   <tr><td><code>image-service</code></td><td>Imágenes con Gemini</td></tr>
-                  <tr><td><code>audio-service</code></td><td>TTS + subida a Firebase Storage</td></tr>
+                  <tr><td><code>audio-service</code></td><td>TTS Gemini → Firebase Storage</td></tr>
                   <tr><td><code>topic-service</code></td><td>Catálogo de temas</td></tr>
                   <tr><td><code>validation-service</code></td><td>Filtros de contenido</td></tr>
                   <tr><td><code>mail-service</code></td><td>Notificaciones</td></tr>
@@ -130,13 +95,12 @@ export default function TechnicalManualPage() {
                   <tr><td>Backend</td><td>Java 17 · Spring Boot 3.5.5 · Spring Cloud 2025.0.0</td></tr>
                   <tr><td>Persistencia</td><td>MongoDB 6 · Spring Data MongoDB</td></tr>
                   <tr><td>JWT</td><td><code>com.auth0:java-jwt 4.5.0</code> (HMAC256)</td></tr>
-                  <tr><td>Resiliencia</td><td>Resilience4j (circuit breaker, retry)</td></tr>
+                  <tr><td>Resiliencia</td><td>Resilience4j</td></tr>
                   <tr><td>Caché</td><td>Caffeine</td></tr>
                   <tr><td>IA</td><td><code>com.google.genai:google-genai</code> (Gemini)</td></tr>
-                  <tr><td>Storage</td><td>Firebase Storage (audio, imágenes)</td></tr>
-                  <tr><td>Despliegue backend</td><td>Docker Compose</td></tr>
+                  <tr><td>Storage</td><td>Firebase Storage</td></tr>
                   <tr><td>App móvil</td><td>Flutter · Dart 3.9+ · Riverpod · GoRouter · Dio</td></tr>
-                  <tr><td>Landing</td><td>React 19 · Vite 6 · Tailwind v4 · GitHub Pages</td></tr>
+                  <tr><td>Despliegue</td><td>Docker Compose</td></tr>
                 </tbody>
               </table>
             </div>
@@ -161,35 +125,21 @@ export default function TechnicalManualPage() {
           <>
             <p className="manual-dropcap">
               Todo el tráfico entra por <code>api-gateway</code> en el puerto{' '}
-              <code>8060</code>. El gateway valida el JWT (excepto en endpoints
-              de auth públicos) y enruta vía Eureka.
+              <code>8060</code>. El gateway valida el JWT (excepto en auth
+              público) y enruta vía Eureka.
             </p>
 
             <h3 className="manual-h3">Públicos (sin JWT)</h3>
-            <div className="manual-table-wrapper">
-              <table className="manual-table">
-                <thead><tr><th>Método</th><th>Ruta</th></tr></thead>
-                <tbody>
-                  <tr><td>POST</td><td><code>/api/v1/user/auth/register</code></td></tr>
-                  <tr><td>POST</td><td><code>/api/v1/user/auth/login</code></td></tr>
-                  <tr><td>POST</td><td><code>/api/v1/user/auth/google-login</code></td></tr>
-                </tbody>
-              </table>
-            </div>
+            <CodeBlock language="text">{`POST /api/v1/user/auth/register
+POST /api/v1/user/auth/login
+POST /api/v1/user/auth/google-login`}</CodeBlock>
 
-            <h3 className="manual-h3">Usuario (autenticados)</h3>
-            <div className="manual-table-wrapper">
-              <table className="manual-table">
-                <thead><tr><th>Método</th><th>Ruta</th></tr></thead>
-                <tbody>
-                  <tr><td>GET</td><td><code>/api/v1/user/auth/validate-id</code></td></tr>
-                  <tr><td>GET / POST / DELETE</td><td><code>/api/v1/user/library</code></td></tr>
-                  <tr><td>GET / POST</td><td><code>/api/v1/user/topics</code></td></tr>
-                  <tr><td>POST / DELETE</td><td><code>/api/v1/user/favorites</code></td></tr>
-                  <tr><td>GET</td><td><code>/api/v1/user/username?idUser=...</code></td></tr>
-                </tbody>
-              </table>
-            </div>
+            <h3 className="manual-h3">Usuario</h3>
+            <CodeBlock language="text">{`GET             /api/v1/user/auth/validate-id
+GET POST DELETE /api/v1/user/library
+GET POST        /api/v1/user/topics
+POST DELETE     /api/v1/user/favorites
+GET             /api/v1/user/username?idUser=...`}</CodeBlock>
 
             <h3 className="manual-h3">Cuentos</h3>
             <div className="manual-table-wrapper">
@@ -201,7 +151,7 @@ export default function TechnicalManualPage() {
                   <tr><td>GET</td><td><code>/api/v1/tale/by-user</code></td><td>Cuentos del usuario (size=20)</td></tr>
                   <tr><td>GET</td><td><code>/api/v1/tale</code></td><td>Feed completo paginado</td></tr>
                   <tr><td>GET</td><td><code>/api/v1/tale/recommend</code></td><td>Top-10 Jaccard</td></tr>
-                  <tr><td>GET</td><td><code>/api/v1/tale/search</code></td><td>Búsqueda por query/topics</td></tr>
+                  <tr><td>GET</td><td><code>/api/v1/tale/search</code></td><td>Búsqueda en feed</td></tr>
                   <tr><td>GET</td><td><code>/api/v1/tale/by-user/search</code></td><td>Búsqueda en biblioteca</td></tr>
                 </tbody>
               </table>
@@ -252,7 +202,7 @@ Content-Type: application/json
               como <code>String</code>.
             </p>
 
-            <h3 className="manual-h3">User (DB <code>users</code>)</h3>
+            <h3 className="manual-h3">User</h3>
             <CodeBlock language="java">{`@Document(collection = "users")
 public class User implements UserDetails {
   @Id private String id;
@@ -269,7 +219,7 @@ public class User implements UserDetails {
   private Set<String> topics;
 }`}</CodeBlock>
 
-            <h3 className="manual-h3">Tale (DB <code>tales</code>)</h3>
+            <h3 className="manual-h3">Tale</h3>
             <CodeBlock language="java">{`@Document(collection = "tale")
 public class Tale {
   @Id private String id;
@@ -288,22 +238,19 @@ public class Tale {
 }`}</CodeBlock>
 
             <p>
-              Los pesos del <code>@TextIndexed</code> permiten que la búsqueda
+              Los pesos del <code>@TextIndexed</code> hacen que la búsqueda
               libre privilegie título &gt; tema principal &gt; temas
-              adicionales.
+              adicionales. Otras entidades:{' '}
+              <code>Comment</code>, <code>Report</code>, <code>TaleScore</code>,
+              {' '}y <code>Text</code>/<code>Image</code>/<code>Audio</code>{' '}
+              en sus servicios respectivos.
             </p>
-
-            <h3 className="manual-h3">Otras entidades</h3>
-            <ul className="manual-list">
-              <li><code>Comment</code>, <code>Report</code>, <code>TaleScore</code> — en <code>tale-service</code></li>
-              <li><code>Text</code>, <code>Image</code>, <code>Audio</code> — uno por cada microservicio de assets, con su propia DB</li>
-            </ul>
 
             <ManualCallout variant="tip" label="Por qué no embeber escenas">
               <p>
                 Las escenas viven en colecciones aparte para que el listado de
                 cuentos sea ligero (sin texto completo) y el caché del gateway
-                eficiente. Solo al abrir un cuento se hidratan las escenas.
+                eficiente. Solo al abrir un cuento se hidratan.
               </p>
             </ManualCallout>
           </>
@@ -311,57 +258,42 @@ public class Tale {
       },
       {
         number: 'IV',
-        title: 'Generación con IA',
-        subtitle: 'Pipeline orquestado por tale-service',
+        title: 'Generación y recomendación',
+        subtitle: 'Pipeline IA + algoritmo Jaccard',
         mascot: 'waiting_tailer.png',
         slug: 'generacion',
         content: (
           <>
             <p className="manual-dropcap">
-              <code>tale-service</code> orquesta llamadas a{' '}
-              <code>validation-service</code>, <code>text-service</code>,{' '}
-              <code>image-service</code> y <code>audio-service</code>. Todos
-              corren Gemini bajo el capó.
+              <code>tale-service</code> orquesta la generación llamando a
+              cuatro microservicios (todos con Gemini), y expone un
+              recomendador con índice de Jaccard sobre los temas del usuario.
             </p>
 
-            <h3 className="manual-h3">Flujo</h3>
+            <h3 className="manual-h3">Pipeline de creación</h3>
             <ol className="manual-list">
               <li>Cliente envía <code>POST /api/v1/tale</code> con prompt + JWT.</li>
-              <li>Gateway valida JWT (HMAC256) y enruta a <code>tale-service</code>.</li>
-              <li><code>validation-service</code> verifica que el prompt sea apto. Si no → <code>400 ContentNotValidated</code>.</li>
-              <li><code>text-service</code> genera el texto con Gemini y crea las entradas <code>Text</code>.</li>
+              <li>Gateway valida JWT y enruta a <code>tale-service</code>.</li>
+              <li><code>validation-service</code> verifica el prompt. Si no → <code>400 ContentNotValidated</code>.</li>
+              <li><code>text-service</code> genera el texto con Gemini.</li>
               <li>Por cada escena (paralelizado vía AsyncConfig):
                 <ul className="manual-list-nested">
-                  <li><code>image-service</code> → imagen con Gemini → Firebase Storage</li>
-                  <li><code>audio-service</code> → dos audios (M/F) con TTS de Gemini → Firebase Storage</li>
+                  <li><code>image-service</code> → imagen con Gemini → Firebase</li>
+                  <li><code>audio-service</code> → dos audios M/F con TTS de Gemini → Firebase</li>
                 </ul>
               </li>
-              <li><code>tale-service</code> persiste el <code>Tale</code> con las URLs y devuelve <code>TaleDTO</code>.</li>
+              <li><code>tale-service</code> persiste el <code>Tale</code> y devuelve <code>TaleDTO</code>.</li>
             </ol>
 
-            <h3 className="manual-h3">Llamadas entre servicios</h3>
             <p>
-              Cada servicio usa <code>WebClient</code> configurado en{' '}
-              <code>WebClientConfig</code>. Métodos tipados en{' '}
-              <code>client/</code>:
+              Las llamadas entre servicios usan <code>WebClient</code>{' '}
+              configurado en <code>WebClientConfig</code>, con clientes
+              tipados en <code>client/</code> y reintentos vía Resilience4j.
             </p>
-            <CodeBlock language="java">{`// tale-service/.../client/TextClient.java
-public List<Text> generateScenes(String token, PromptModel prompt) {
-  return webClient.post()
-      .uri("/api/v1/text")
-      .header(AUTHORIZATION, "Bearer " + token)
-      .bodyValue(prompt)
-      .retrieve()
-      .bodyToFlux(Text.class)
-      .collectList()
-      .block();
-}`}</CodeBlock>
 
             <h3 className="manual-h3">Etapas pedagógicas</h3>
             <p>
-              El campo <code>stage</code> del <code>PromptModel</code> ajusta
-              el system prompt enviado a Gemini según el referente del MEN
-              Colombia:
+              El campo <code>stage</code> ajusta el system prompt de Gemini:
             </p>
             <div className="manual-table-wrapper">
               <table className="manual-table">
@@ -374,11 +306,41 @@ public List<Text> generateScenes(String token, PromptModel prompt) {
               </table>
             </div>
 
+            <h3 className="manual-h3">Recomendador (Jaccard)</h3>
+            <p>
+              El conjunto de temas se representa como <code>BitSet</code>{' '}
+              indexado por <code>TopicIndexer</code>; Top-K via min-heap en{' '}
+              O(n log k):
+            </p>
+            <CodeBlock language="java">{`public List<TaleDTO> recommendByJaccard(String tokenUser, int k) {
+  if (topicIndexer.size() == 0)
+    for (TopicDTO t : topicClient.findAll()) topicIndexer.idFor(t.id());
+
+  PriorityQueue<TaleScore> pq = new PriorityQueue<>(
+      Comparator.comparingDouble(TaleScore::getScore));
+  UserDTO u = userClient.validateId(tokenUser);
+  BitSet user = calculateBitsetByUser(userClient.getTopics(tokenUser));
+
+  for (Tale t : taleRepository.findAll()) {
+    if (t.getIdUser().equals(u.id())) continue; // no propios
+    double score = SimilarityUtils.jaccardIndex(user, calculateBitsetByTale(t));
+    if (score <= 0) continue;
+    if (pq.size() < k) pq.offer(new TaleScore(t, score));
+    else if (score > pq.peek().getScore()) {
+      pq.poll();
+      pq.offer(new TaleScore(t, score));
+    }
+  }
+  // ordena descendente y mapea a DTO
+  return ...;
+}`}</CodeBlock>
+
             <ManualCallout variant="info" label="Voz dual y diccionario">
               <p>
-                Audio se genera dos veces (M/F) para alternancia en runtime.
-                Gemini extrae palabras "complejas" para la edad y devuelve
-                definiciones infantiles → <code>dictionary: Map&lt;palabra, def&gt;</code>.
+                Audio se genera dos veces (M/F) para alternar en runtime sin
+                regenerar. Gemini extrae palabras "complejas" para la edad y
+                devuelve definiciones infantiles → <code>dictionary</code>{' '}
+                del cuento.
               </p>
             </ManualCallout>
           </>
@@ -386,68 +348,6 @@ public List<Text> generateScenes(String token, PromptModel prompt) {
       },
       {
         number: 'V',
-        title: 'Recomendación con Jaccard',
-        subtitle: 'Top-K cuentos por similitud de temas',
-        mascot: 'approve_tailer.png',
-        slug: 'recomendaciones',
-        content: (
-          <>
-            <p className="manual-dropcap">
-              <code>RecommenderService</code> en <code>tale-service</code> usa
-              el índice de Jaccard entre temas del usuario y temas del cuento.
-              Cada conjunto se representa como <code>BitSet</code> indexado por{' '}
-              <code>TopicIndexer</code>.
-            </p>
-
-            <h3 className="manual-h3">Algoritmo</h3>
-            <CodeBlock language="java">{`public List<TaleDTO> recommendByJaccard(String tokenUser, int k) {
-  if (topicIndexer.size() == 0) {
-    for (TopicDTO topic : topicClient.findAll())
-      topicIndexer.idFor(topic.id());
-  }
-
-  PriorityQueue<TaleScore> pq = new PriorityQueue<>(
-      Comparator.comparingDouble(TaleScore::getScore));
-
-  UserDTO u = userClient.validateId(tokenUser);
-  BitSet user = calculateBitsetByUser(userClient.getTopics(tokenUser));
-
-  for (Tale t : taleRepository.findAll()) {
-    if (t.getIdUser().equals(u.id())) continue; // no propios
-
-    double score = SimilarityUtils.jaccardIndex(user, calculateBitsetByTale(t));
-    if (score <= 0) continue;
-
-    if (pq.size() < k) pq.offer(new TaleScore(t, score));
-    else if (score > pq.peek().getScore()) {
-      pq.poll();
-      pq.offer(new TaleScore(t, score));
-    }
-  }
-
-  // ordena descendente y mapea a DTO
-  return ...;
-}`}</CodeBlock>
-
-            <h3 className="manual-h3">Por qué BitSet + min-heap</h3>
-            <ul className="manual-list">
-              <li><strong>BitSet:</strong> Jaccard se calcula con dos AND/OR de bits y dos <code>cardinality()</code>.</li>
-              <li><strong>Min-heap:</strong> Top-K en O(n log k) en vez de ordenar todos los cuentos.</li>
-              <li><strong>Filtros:</strong> excluye cuentos del propio usuario y scores ≤ 0.</li>
-            </ul>
-
-            <ManualCallout variant="tip" label="Roadmap">
-              <p>
-                A futuro: collaborative filtering con volumen, embeddings de
-                textos para similitud semántica, time decay para privilegiar
-                cuentos recientes.
-              </p>
-            </ManualCallout>
-          </>
-        ),
-      },
-      {
-        number: 'VI',
         title: 'Autenticación y seguridad',
         subtitle: 'JWT HMAC256 + doble hashing de password',
         mascot: 'full_body_tailer.png',
@@ -456,7 +356,8 @@ public List<Text> generateScenes(String token, PromptModel prompt) {
           <>
             <p className="manual-dropcap">
               Tres pilares: <strong>SHA-256 cliente + BCrypt servidor</strong>{' '}
-              en contraseñas, <strong>JWT con HMAC256</strong>, y un{' '}
+              en contraseñas, <strong>JWT con HMAC256</strong> via{' '}
+              <code>com.auth0:java-jwt</code>, y un{' '}
               <strong>filtro reactivo</strong> en el gateway.
             </p>
 
@@ -465,7 +366,6 @@ public List<Text> generateScenes(String token, PromptModel prompt) {
 final bytes = utf8.encode(passwordPlano);
 final hashedPassword = sha256.convert(bytes);
 // se envía hashedPassword.toString() al backend`}</CodeBlock>
-
             <CodeBlock language="java">{`// backend/user-service — SecurityConfiguration.java
 @Bean
 public PasswordEncoder passwordEncoder() {
@@ -476,9 +376,8 @@ String encoded = passwordEncoder.encode(dto.password()); // BCrypt(SHA-256(plain
 
             <h3 className="manual-h3">JWT HMAC256</h3>
             <p>
-              Librería <code>com.auth0:java-jwt 4.5.0</code>. Secret e issuer
-              vienen del config-server (<code>config.jwt.secret</code>,{' '}
-              <code>config.jwt.issuer</code>).
+              Secret e issuer vienen del config-server (<code>config.jwt.secret</code>,{' '}
+              <code>config.jwt.issuer</code>):
             </p>
             <CodeBlock language="java">{`// api-gateway/.../service/JWTService.java
 public String getSubject(String token) {
@@ -505,38 +404,39 @@ public String getSubject(String token) {
 
             <h3 className="manual-h3">Google OAuth</h3>
             <p>
-              Cliente usa <code>google_sign_in ^7.2</code>. Envía el ID Token
-              al backend, que lo valida con Google y emite JWT propio. Si el
-              usuario no existe se crea con <code>authProvider: GOOGLE</code>.
+              Cliente usa <code>google_sign_in ^7.2</code> y envía el ID Token
+              al backend. El backend lo valida con Google y emite JWT propio.
+              Si el usuario no existe se crea con <code>authProvider: GOOGLE</code>.
             </p>
 
             <ManualCallout variant="important" label="Rotación de secret">
               <p>
                 HMAC256 usa una sola key compartida via Spring Cloud Config.
                 Para rotar, cambia el valor en el config-server y reinicia
-                los servicios. Para múltiples emisores, considerar migrar a
-                RS256.
+                los servicios.
               </p>
             </ManualCallout>
           </>
         ),
       },
       {
-        number: 'VII',
-        title: 'Cliente Flutter y landing',
-        subtitle: 'Clean Architecture + React 19',
+        number: 'VI',
+        title: 'Cliente Flutter',
+        subtitle: 'Clean Architecture con feature folders',
         mascot: 'happy_tailer.png',
         slug: 'cliente',
         content: (
           <>
             <p className="manual-dropcap">
-              La app móvil sigue Clean Architecture con folders por feature.
-              La landing es una SPA estática en GitHub Pages.
+              La app sigue <strong>Clean Architecture</strong> con organización{' '}
+              <strong>por feature</strong>. Cada feature tiene sus capas{' '}
+              <code>domain</code>, <code>infrastructure</code> y{' '}
+              <code>presentation</code>.
             </p>
 
-            <h3 className="manual-h3">App móvil — estructura</h3>
+            <h3 className="manual-h3">Estructura</h3>
             <CodeBlock language="text">{`lib/
-├── config/                 # GoRouter, tema Material 3, env
+├── config/                 # GoRouter, Material 3 theme, env
 ├── features/
 │   ├── auth/
 │   │   ├── domain/         # Contratos, entidades
@@ -548,7 +448,7 @@ public String getSubject(String token) {
 │   └── user/
 └── shared/                 # Cross-feature`}</CodeBlock>
 
-            <h3 className="manual-h3">Patrones de la app</h3>
+            <h3 className="manual-h3">Patrones</h3>
             <ul className="manual-list">
               <li><strong>Estado:</strong> Riverpod con <code>NotifierProvider</code>; forms con <code>AutoDisposeNotifier</code>.</li>
               <li><strong>Routing:</strong> GoRouter con guards observando <code>authStatusProvider</code> e <code>isCreatingTaleProvider</code>.</li>
@@ -557,15 +457,6 @@ public String getSubject(String token) {
               <li><strong>Mapping:</strong> <code>Model</code> (JSON) y <code>Entity</code> (dominio) separados.</li>
               <li><strong>Tokens:</strong> en <code>shared_preferences</code>.</li>
               <li><strong>Tema:</strong> Material 3 + Gabarito/Space Mono via <code>google_fonts</code>. Provider de accesibilidad: dark mode + escala de fuente 0.8x–1.4x.</li>
-            </ul>
-
-            <h3 className="manual-h3">Landing (este sitio)</h3>
-            <ul className="manual-list">
-              <li>React 19 + Vite 6 + TypeScript + Tailwind v4 (CSS-first)</li>
-              <li>HashRouter (GitHub Pages no soporta rewrite a <code>index.html</code>)</li>
-              <li>Lazy loading: cada manual y la política son chunks aparte</li>
-              <li>Print CSS para PDF: portada + márgenes mm + page breaks por capítulo</li>
-              <li>Hidden routes: <code>/manual-tecnico</code> con <code>noindex</code> + Disallow en <code>robots.txt</code></li>
             </ul>
 
             <ManualCallout variant="tip" label="Either de dartz">
@@ -579,16 +470,17 @@ public String getSubject(String token) {
         ),
       },
       {
-        number: 'VIII',
+        number: 'VII',
         title: 'Setup y deploy',
-        subtitle: 'Cómo correr y desplegar los componentes',
+        subtitle: 'Cómo correr y desplegar el sistema',
         mascot: 'ok_tailer.png',
         slug: 'ops',
         content: (
           <>
             <p className="manual-dropcap">
-              Backend con Docker Compose, app con Flutter, landing con npm.
-              CI/CD automatiza el deploy de la landing en GitHub Pages.
+              Backend con Docker Compose y app Flutter localmente. Para
+              producción, el backend va en contenedores y la app pasa por
+              TestFlight (iOS) y Play Console (Android).
             </p>
 
             <h3 className="manual-h3">Setup local</h3>
@@ -596,13 +488,10 @@ public String getSubject(String token) {
 cd taily-backend && docker-compose up --build
 # Eureka:  localhost:8761  ·  Gateway:  localhost:8060
 
-# App
+# App Flutter
 cd taily-frontend
 echo "BASE_API_URL=http://localhost:8060" > .env
-flutter pub get && flutter run
-
-# Landing
-cd taily-landing && npm install && npm run dev`}</CodeBlock>
+flutter pub get && flutter run`}</CodeBlock>
 
             <h3 className="manual-h3">.env del backend</h3>
             <CodeBlock language="bash">{`EUREKA_USER=...
@@ -615,38 +504,28 @@ FIREBASE_PROJECT_ID=...
 FIREBASE_STORAGE_BUCKET=...
 FIREBASE_ADMIN_KEY=...   # JSON service account`}</CodeBlock>
 
-            <h3 className="manual-h3">Deploy de la landing</h3>
-            <p>
-              GitHub Actions construye y publica en cada push a{' '}
-              <code>main</code>. El dominio <code>taily.com.co</code> apunta a
-              GitHub Pages con 4 registros A + CNAME <code>www</code> →{' '}
-              <code>anfeespi.github.io</code>.
-            </p>
-
             <h3 className="manual-h3">Comandos útiles</h3>
-            <CodeBlock language="bash">{`# Backend — un solo servicio en local
+            <CodeBlock language="bash">{`# Backend — un solo servicio
 cd taily-backend/user-service && ./mvnw spring-boot:run
 
 # Tests
-./mvnw test          # backend
-flutter test         # app
+./mvnw test
+flutter test
 
 # Lint / format
 ./mvnw spotless:check
 flutter analyze
-npm run lint
 
 # Limpiar
-docker-compose down -v   # backend (incluye volumen mongo)
-flutter clean && flutter pub get
-rm -rf node_modules dist`}</CodeBlock>
+docker-compose down -v
+flutter clean && flutter pub get`}</CodeBlock>
 
             <ManualCallout variant="important" label="Secrets">
               <p>
                 Nunca commitear archivos <code>.env</code> ni service account
-                JSON. Cada repo los excluye en su <code>.gitignore</code>,
-                pero verifica con <code>git status</code> antes de hacer push
-                si los acabas de crear.
+                JSONs. Cada repo los excluye en su <code>.gitignore</code>;
+                verifica con <code>git status</code> antes de hacer push si
+                los acabas de crear.
               </p>
             </ManualCallout>
           </>
