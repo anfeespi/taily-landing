@@ -5,8 +5,8 @@ export default function Footer() {
   const scrollTo = useScrollTo()
   const location = useLocation()
 
-  // Hide footer on the manual page (it has its own layout)
-  if (location.pathname === '/manual') {
+  // Hide footer on manual pages (they have their own layout)
+  if (location.pathname === '/manual' || location.pathname === '/manual-tecnico') {
     return null
   }
 

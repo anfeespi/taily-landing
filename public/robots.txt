@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Internal technical manual — do not index
+Disallow: /manual-tecnico
+Disallow: /#/manual-tecnico
+
 Sitemap: https://taily.com.co/sitemap.xml

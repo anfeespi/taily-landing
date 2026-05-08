@@ -1113,6 +1113,136 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ===== Code blocks (technical manual) ===== */
+.manual-code {
+  position: relative;
+  background: #1f1d18;
+  color: #f5e3c1;
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  white-space: pre;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 8px 24px -12px rgba(0, 0, 0, 0.3);
+}
+
+.manual-code code {
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.manual-code-lang {
+  display: inline-block;
+  position: absolute;
+  top: 0.625rem;
+  right: 0.875rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c97f0d;
+  opacity: 0.75;
+}
+
+/* Inline code within manual paragraphs */
+.manual-chapter-body code:not(.manual-code code) {
+  background: rgba(255, 221, 177, 0.5);
+  color: var(--color-primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.85em;
+  border: 1px solid rgba(127, 86, 15, 0.15);
+}
+
+/* ===== Tables (technical manual) ===== */
+.manual-table-wrapper {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 221, 177, 0.6);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.manual-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+}
+
+.manual-table thead {
+  background: var(--color-primary-container);
+}
+
+.manual-table th {
+  text-align: left;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+}
+
+.manual-table td {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px dashed rgba(127, 86, 15, 0.18);
+  color: var(--color-on-surface);
+  vertical-align: top;
+}
+
+.manual-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.manual-table tbody tr:hover {
+  background: rgba(255, 221, 177, 0.2);
+}
+
+/* Definition list for tech specs */
+.manual-defs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+@media (min-width: 640px) {
+  .manual-defs {
+    grid-template-columns: max-content 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.625rem;
+  }
+}
+
+.manual-defs dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+}
+
+.manual-defs dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-on-surface);
+}
+
+.manual-defs dd + dt {
+  margin-top: 0.5rem;
+}
+
 /* Landscape phone wrapper used in chapter 6 (story viewer) */
 .manual-phone-landscape-wrapper {
   display: flex;
@@ -1810,6 +1940,64 @@ h1, h2, h3, h4, h5, h6 {
   .manual-screen-text {
     flex: 1;
     font-size: 10pt !important;
+  }
+
+  /* Code blocks in print */
+  .manual-code {
+    background: #f5f0e6 !important;
+    color: #3a2e15 !important;
+    border: 1pt solid #c8b89a !important;
+    padding: 3mm 4mm !important;
+    margin: 3mm 0 !important;
+    font-size: 8pt !important;
+    line-height: 1.5 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .manual-code-lang {
+    color: #7f560f !important;
+  }
+
+  /* Tables in print */
+  .manual-table-wrapper {
+    margin: 3mm 0 !important;
+    border: 0.5pt solid #c8b89a !important;
+    background: #fff !important;
+    page-break-inside: avoid;
+  }
+
+  .manual-table {
+    font-size: 9pt !important;
+  }
+
+  .manual-table th {
+    background: #ffddb1 !important;
+    color: #7f560f !important;
+    padding: 2mm 3mm !important;
+    font-size: 8.5pt !important;
+  }
+
+  .manual-table td {
+    padding: 2mm 3mm !important;
+    border-bottom: 0.25pt dashed #c8b89a !important;
+  }
+
+  /* Definition list in print */
+  .manual-defs {
+    margin: 3mm 0 !important;
+    grid-template-columns: max-content 1fr !important;
+    column-gap: 4mm !important;
+    row-gap: 1.5mm !important;
+  }
+
+  .manual-defs dt {
+    font-size: 8.5pt !important;
+    color: #7f560f !important;
+  }
+
+  .manual-defs dd {
+    font-size: 9.5pt !important;
   }
 
   /* Standalone screenshot in print */

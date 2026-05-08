@@ -25,8 +25,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
-  // Hide navbar on the manual page (it has its own header)
-  if (location.pathname === '/manual') {
+  // Hide navbar on manual pages (they have their own header)
+  if (location.pathname === '/manual' || location.pathname === '/manual-tecnico') {
     return null
   }
 

@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage'
 
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
 const UserManualPage = lazy(() => import('./pages/UserManualPage'))
+const TechnicalManualPage = lazy(() => import('./pages/TechnicalManualPage'))
 
 const fallback = (
   <div className="min-h-screen pt-24 text-center text-secondary">Cargando...</div>
@@ -52,6 +53,15 @@ export default function App() {
             element={
               <Suspense fallback={fallback}>
                 <UserManualPage />
+              </Suspense>
+            }
+          />
+          {/* Hidden route — not linked from navbar/footer. Disallowed in robots.txt. */}
+          <Route
+            path="/manual-tecnico"
+            element={
+              <Suspense fallback={fallback}>
+                <TechnicalManualPage />
               </Suspense>
             }
           />
