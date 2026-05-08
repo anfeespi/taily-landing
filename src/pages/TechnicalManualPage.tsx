@@ -580,43 +580,28 @@ public String getSubject(String token) {
       },
       {
         number: 'VIII',
-        title: 'Setup, deploy y contribución',
-        subtitle: 'Cómo correr, desplegar y contribuir',
+        title: 'Setup y deploy',
+        subtitle: 'Cómo correr y desplegar los componentes',
         mascot: 'ok_tailer.png',
         slug: 'ops',
         content: (
           <>
             <p className="manual-dropcap">
               Backend con Docker Compose, app con Flutter, landing con npm.
-              CI/CD automatiza el deploy de la landing y manual para apps.
+              CI/CD automatiza el deploy de la landing en GitHub Pages.
             </p>
-
-            <h3 className="manual-h3">Repos</h3>
-            <div className="manual-table-wrapper">
-              <table className="manual-table">
-                <thead><tr><th>Componente</th><th>URL</th></tr></thead>
-                <tbody>
-                  <tr><td>Backend</td><td><code>github.com/anfeespi/taily-backend</code></td></tr>
-                  <tr><td>App móvil</td><td><code>github.com/DiegoF1311/taily-frontend</code></td></tr>
-                  <tr><td>Landing</td><td><code>github.com/anfeespi/taily-landing</code></td></tr>
-                </tbody>
-              </table>
-            </div>
 
             <h3 className="manual-h3">Setup local</h3>
             <CodeBlock language="bash">{`# Backend
-git clone https://github.com/anfeespi/taily-backend.git
 cd taily-backend && docker-compose up --build
 # Eureka:  localhost:8761  ·  Gateway:  localhost:8060
 
 # App
-git clone https://github.com/DiegoF1311/taily-frontend.git
 cd taily-frontend
 echo "BASE_API_URL=http://localhost:8060" > .env
 flutter pub get && flutter run
 
 # Landing
-git clone https://github.com/anfeespi/taily-landing.git
 cd taily-landing && npm install && npm run dev`}</CodeBlock>
 
             <h3 className="manual-h3">.env del backend</h3>
@@ -638,33 +623,31 @@ FIREBASE_ADMIN_KEY=...   # JSON service account`}</CodeBlock>
               <code>anfeespi.github.io</code>.
             </p>
 
-            <h3 className="manual-h3">Convenciones</h3>
-            <ul className="manual-list">
-              <li><strong>Branches:</strong> <code>feat/...</code>, <code>fix/...</code>, <code>docs/...</code> desde <code>main</code>.</li>
-              <li><strong>Commits:</strong> Conventional Commits (<code>feat:</code>, <code>fix:</code>, <code>refactor:</code>, etc.).</li>
-              <li><strong>PR:</strong> 1 aprobación mínimo, merge squash.</li>
-              <li><strong>Backend:</strong> <code>./mvnw spotless:check</code> + Javadoc en español.</li>
-              <li><strong>App:</strong> <code>flutter analyze</code> + <code>flutter format .</code>; errores con <code>Either</code>.</li>
-              <li><strong>Landing:</strong> ESLint + Prettier vía <code>npm run lint</code>.</li>
-              <li>Tests obligatorios para nueva lógica de negocio.</li>
-            </ul>
+            <h3 className="manual-h3">Comandos útiles</h3>
+            <CodeBlock language="bash">{`# Backend — un solo servicio en local
+cd taily-backend/user-service && ./mvnw spring-boot:run
 
-            <h3 className="manual-h3">Checklist de PR</h3>
-            <ul className="manual-list">
-              <li>¿Resuelve el issue descrito?</li>
-              <li>¿Mantiene la separación de capas?</li>
-              <li>¿Hay PII en logs nuevos? (no loggear emails, tokens, contraseñas)</li>
-              <li>¿Endpoints nuevos del gateway están en <code>permitAll</code> si deben ser públicos?</li>
-              <li>¿Tests proporcionales al riesgo?</li>
-            </ul>
+# Tests
+./mvnw test          # backend
+flutter test         # app
 
-            <ManualCallout variant="farewell" label="Gracias por contribuir">
+# Lint / format
+./mvnw spotless:check
+flutter analyze
+npm run lint
+
+# Limpiar
+docker-compose down -v   # backend (incluye volumen mongo)
+flutter clean && flutter pub get
+rm -rf node_modules dist`}</CodeBlock>
+
+            <ManualCallout variant="important" label="Secrets">
               <p>
-                Cada línea termina en manos de un niño y su familia
-                compartiendo un cuento. El cuidado con el que escribimos el
-                código se traduce en la calidad de esa experiencia.
+                Nunca commitear archivos <code>.env</code> ni service account
+                JSON. Cada repo los excluye en su <code>.gitignore</code>,
+                pero verifica con <code>git status</code> antes de hacer push
+                si los acabas de crear.
               </p>
-              <p style={{ marginTop: '0.75rem' }}>— El equipo técnico de Taily</p>
             </ManualCallout>
           </>
         ),
